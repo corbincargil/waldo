@@ -1,21 +1,41 @@
 import React from "react";
 
-export default function GamePreview() {
+export default function GamePreview(props) {
+  const map = props.map;
+  const characters = map.characters;
+
   return (
-    <div className="preview">
-      <h1>{title}</h1>
-      <img src="{image}" alt="{tite} preview" />
-      <div className="characters">
-        {characters.map((character) => {
-          <div className="chracter-info">
+    <div
+      className="preview"
+      style={{ display: "flex", flexDirection: "column" }}
+    >
+      <h1>{map.name}</h1>
+      <img
+        src={map.image}
+        alt="map preview image"
+        style={{ width: "350px", height: "auto" }}
+      />
+      <div className="characters" style={{ display: "flex" }}>
+        {/* <ul > */}
+        {characters.map((character) => (
+          <div
+            className="character-info"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <img
-              src={chracter.icon} //not sure which way to put it
-              alt="{character.name}" //not sure which way to put it
+              src={character.icon}
+              alt={character.name}
               className="character-icon"
+              style={{ width: "40px", height: "auto" }}
             />
             <span className="character-name">{character.name}</span>
-          </div>;
-        })}
+          </div>
+        ))}
+        {/* </ul> */}
       </div>
     </div>
   );

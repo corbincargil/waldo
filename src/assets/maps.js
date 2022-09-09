@@ -11,8 +11,8 @@ import imageOne from "./pic_1.jpeg";
 import imageTwo from "./pic_2.jpg";
 
 //factory function to create character objects
-const character = (name, pic, isFound, id) => {
-  return { name, pic, isFound, id };
+const character = (name, icon, isFound, id) => {
+  return { name, icon, isFound, id };
 };
 
 const masterChief = character("Master Chief", masterChiefIcon, false, 1);
@@ -32,8 +32,8 @@ const odlaw = character("Odlaw", odlawIcon, false, 7);
 const wizard = character("Wizard Whitebeard", wizardIcon, false, 8);
 
 //factory function to create map objects
-const map = (name, pic, characters, id) => {
-  return { name, pic, characters, id };
+const map = (name, image, characters, id) => {
+  return { name, image, characters, id };
 };
 
 export const mapOne = map(
