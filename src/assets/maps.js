@@ -29,7 +29,7 @@ const wenda = character("Wenda", wendaIcon, false, 6);
 
 const odlaw = character("Odlaw", odlawIcon, false, 7);
 
-const wizard = character("Wizard Whitebeard", wizardIcon, false, 8);
+const wizard = character("Whitebeard", wizardIcon, false, 8);
 
 //factory function to create map objects
 const map = (name, image, characters, id) => {
@@ -47,5 +47,5 @@ export const mapTwo = map(
   "Video Game Characters",
   imageTwo,
   [masterChief, chell, ratchet, scorpion],
-  1
+  2
 );

@@ -23,7 +23,6 @@ export default function GamePreview(props) {
               alt={character.name}
               className="character-icon"
             />
-
             <p className="character-name">{character.name}</p>
           </div>
         ))}
