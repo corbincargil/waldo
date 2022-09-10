@@ -1,3 +1,7 @@
+@import "./styles/game-preview.css";
+@import "./styles/home.css";
+@import "./styles/footer.css";
+
 :root {
   background-color: rgb(130, 130, 198);
   --bg-color: rgb(206, 51, 51);

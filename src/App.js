@@ -1,12 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
-import "./styles/App.css";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home></Home>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/puzzle_1" />
+          <Route path="/puzzle_2" />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }
