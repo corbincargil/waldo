@@ -1,15 +1,26 @@
 import React from "react";
 import CharacterIcon from "./CharacterIcon";
+import { fetchLocations } from "../firebase/initialize";
 
 export default function CharacterSelect(props) {
   const { characters, gameStatus, setGameStatus, position } = props;
+
+  const locations = fetchLocations();
+
+  function getCorrectLocation(character) {
+    const doc = locations.find((location) => {
+      return location.name.toLowerCase() === character.name.toLowerCase();
+    });
+    return doc;
+  }
 
   function handleClick(id) {
     const char = characters.find((character) => {
       return character.id === id;
     });
-    // console.log(char);
+    console.log(char);
     // 1) use char to fetch the correct char location.
+    const correctLocation = getCorrectLocation(char);
     // 2) if 'position' matches correctPosition, replace char with char = {...char,isFound: true} and increment charsFound.
     // 3) If charsFound == characters.length, setStatus to 'complete', else, setStatus to 'searching'
     setGameStatus("searching");

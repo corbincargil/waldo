@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   collection,
+  getDocs,
+  snapshot,
   doc,
   serverTimestamp,
 } from "firebase/firestore";
@@ -20,4 +22,15 @@ const app = initializeApp(firebaseConfig);
 //init services
 const db = getFirestore();
 //locations ref
-const colRef = collection(db, "locations");
+const LocationRef = collection(db, "locations");
+
+//Locations
+export function fetchLocations() {
+  let locations = [];
+  getDocs(LocationRef).then((snapshot) => {
+    snapshot.docs.forEach((location) => {
+      locations.push({ ...location.data(), id: location.id });
+    });
+  });
+  return locations;
+}
