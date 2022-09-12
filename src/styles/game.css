@@ -3,11 +3,31 @@
 }
 
 .hud {
-  background-color: aliceblue;
+  padding: 0px 10px;
+  background-color: rgb(147, 191, 231);
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
   text-decoration: none;
+  position: sticky;
+  top: 0px;
+}
+
+.game-container .characters {
+  margin: 16px 4px;
+  width: clamp(280px, 25%, 500px);
+  height: 80px;
+}
+.game-container .character-icon {
+  background-color: white;
+  overflow: hidden;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.game-container .character-icon.found {
+  filter: brightness(0.5);
 }
 
 .hud a,
@@ -24,13 +44,16 @@
   color: black;
   font-size: 1.5rem;
   padding: 15px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
   border-radius: 5px;
-  background-color: rgba(66, 66, 66, 0.8);
+  background-color: #f7f7f7;
   width: 500px;
-  height: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
-  top: 50vh;
+  top: calc(50vh - 250px / 2);
   left: calc(50vw - 500px / 2);
 }
 
@@ -38,5 +61,13 @@
   display: flex;
   justify-content: center;
   gap: 16px;
-  align-items: baseline;
+  align-items: flex-start;
+}
+
+.instructions button {
+  font-size: 1.2rem;
+  align-self: center;
+  width: 90px;
+  height: 45px;
+  border-radius: 5px;
 }

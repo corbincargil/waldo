@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import CharacterIcon from "./CharacterIcon";
 
 export default function Instructions(props) {
   const { characters, gameStatus } = props;
@@ -20,14 +21,11 @@ export default function Instructions(props) {
         <h3>Select each of the characters below:</h3>
         <div className="character-list">
           {characters.map((character) => (
-            <div className="character-info" key={character.id}>
-              <img
-                src={character.icon}
-                alt={character.name}
-                className="character-icon"
-              />
-              <p className="character-name">{character.name}</p>
-            </div>
+            <CharacterIcon
+              name={character.name}
+              icon={character.icon}
+              key={character.id}
+            />
           ))}
         </div>
         <button onClick={handleStartGame}>Start</button>

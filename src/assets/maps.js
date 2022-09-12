@@ -17,7 +17,7 @@ const character = (name, icon, isFound, id) => {
 
 const masterChief = character("Master Chief", masterChiefIcon, false, 1);
 
-const chell = character("Chell & Companion Cube", chellIcon, false, 2);
+const chell = character("Chell", chellIcon, false, 2);
 
 const ratchet = character("Ratchet & Clank", ratchetIcon, false, 3);
 
@@ -27,7 +27,7 @@ const waldo = character("Waldo", waldoIcon, false, 5);
 
 const wenda = character("Wenda", wendaIcon, false, 6);
 
-const odlaw = character("Odlaw", odlawIcon, false, 7);
+const odlaw = character("Odlaw", odlawIcon, true, 7);
 
 const wizard = character("Whitebeard", wizardIcon, false, 8);
 

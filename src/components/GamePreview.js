@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CharacterIcon from "./CharacterIcon";
 
 export default function GamePreview(props) {
   const map = props.map;
-  const characters = map.characters;
 
   return (
     <div className="preview">
@@ -16,12 +16,13 @@ export default function GamePreview(props) {
         />
       </Link>
       <div className="characters">
-        {characters.map((character) => (
-          <div className="character-info" key={character.id}>
-            <img
-              src={character.icon}
-              alt={character.name}
-              className="character-icon"
+        {map.characters.map((character) => (
+          <div className="character-info">
+            <CharacterIcon
+              name={character.name}
+              icon={character.icon}
+              isFound={character.isFound}
+              key={character.id}
             />
             <p className="character-name">{character.name}</p>
           </div>
