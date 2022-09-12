@@ -19,7 +19,7 @@ export default function CharacterIcon(props) {
           src={props.icon}
           alt={props.name}
           className="character-img"
-          style={{ width: "70px" }}
+          style={props.style}
         />
       </div>
     );

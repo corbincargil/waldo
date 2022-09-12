@@ -17,12 +17,12 @@ export default function GamePreview(props) {
       </Link>
       <div className="characters">
         {map.characters.map((character) => (
-          <div className="character-info">
+          <div key={character.id} className="character-info">
             <CharacterIcon
               name={character.name}
               icon={character.icon}
               isFound={character.isFound}
-              key={character.id}
+              style={{ width: "50px" }}
             />
             <p className="character-name">{character.name}</p>
           </div>

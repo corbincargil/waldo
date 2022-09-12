@@ -2,18 +2,18 @@ import React, { useEffect } from "react";
 import CharacterIcon from "./CharacterIcon";
 
 export default function Instructions(props) {
-  const { characters, gameStatus } = props;
+  const { characters, gameStatus, setGameStatus } = props;
 
   function handleStartGame() {
-    console.log("handleStartGame ran");
+    setGameStatus("searching");
   }
 
-  useEffect(() => {
-    console.log(`side effect!! gameStatus: ${gameStatus}`);
-    return () => {
-      console.log("Instructions component unmounted");
-    };
-  }, [gameStatus]);
+  // useEffect(() => {
+  //   console.log(`side effect!! gameStatus: ${gameStatus}`);
+  //   return () => {
+  //     console.log("Instructions component unmounted");
+  //   };
+  // }, [gameStatus]);
 
   if (gameStatus === "notStarted") {
     return (
@@ -25,6 +25,7 @@ export default function Instructions(props) {
               name={character.name}
               icon={character.icon}
               key={character.id}
+              style={{ width: "70px" }}
             />
           ))}
         </div>
