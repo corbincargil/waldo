@@ -37,6 +37,9 @@
 }
 
 #game-image {
+  position: absolute;
+  top: 112px;
+  left: 2px;
   width: 99vw;
 }
 

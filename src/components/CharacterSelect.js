@@ -15,13 +15,13 @@ export default function CharacterSelect(props) {
     setGameStatus("searching");
   }
 
-  const correctPosition = { x: 796, y: 545 };
-  console.log(`correct: (${correctPosition.x}, ${correctPosition.y})`);
-  console.log(`you clicked: (${position.x},${position.y})`);
+  //   const correctPosition = { x: 796, y: 545 };
+  //   console.log(`correct: (${correctPosition.x}, ${correctPosition.y})`);
+  //   console.log(`you clicked: (${position.x},${position.y})`);
 
   if (gameStatus === "selectingCharacter") {
-    console.log(position.x);
-    console.log(position.y);
+    // console.log(position.x);
+    // console.log(position.y);
     return (
       <div
         className="character-select"
