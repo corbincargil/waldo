@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function Instructions(props) {
-  const { characters, status, dispatch } = props;
+  const { characters, gameStatus } = props;
 
   function handleStartGame() {
     console.log("handleStartGame ran");
-    dispatch({
-      type: "startedGame",
-    });
   }
 
-  if (status == "notStarted") {
+  useEffect(() => {
+    console.log(`side effect!! gameStatus: ${gameStatus}`);
+    return () => {
+      console.log("Instructions component unmounted");
+    };
+  }, [gameStatus]);
+
+  if (gameStatus === "notStarted") {
     return (
       <div className="instructions">
         <h3>Select each of the characters below:</h3>

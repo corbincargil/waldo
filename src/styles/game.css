@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .hud {
   background-color: aliceblue;
   display: flex;
@@ -6,8 +10,10 @@
   text-decoration: none;
 }
 
+.hud a,
 .hud a:visited {
   text-decoration: none;
+  color: black;
 }
 
 #game-image {

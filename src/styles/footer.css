@@ -15,12 +15,13 @@
   gap: 6px;
 }
 
+.footer a,
+.footer a:visited {
+  text-decoration: none;
+  color: black;
+}
+
 .footer a:hover img {
   transform: rotate(1turn);
   transition: 1s;
-}
-
-a:visited {
-  text-decoration: none;
-  color: var(--heading-one-color);
 }
