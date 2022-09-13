@@ -2,20 +2,19 @@ import React, { useEffect } from "react";
 import CharacterIcon from "./CharacterIcon";
 
 export default function Instructions(props) {
-  const { characters, gameStatus, setGameStatus } = props;
+  const { map, gameStatus, setGameStatus, characters, setCharacters } = props;
 
   function handleStartGame() {
     setGameStatus("searching");
   }
 
-  // useEffect(() => {
-  //   console.log(`side effect!! gameStatus: ${gameStatus}`);
-  //   return () => {
-  //     console.log("Instructions component unmounted");
-  //   };
-  // }, [gameStatus]);
+  useEffect(() => {
+    if (gameStatus === "gameReady") {
+      setCharacters(map.characters);
+    }
+  }, [gameStatus]);
 
-  if (gameStatus === "notStarted") {
+  if (gameStatus === "gameReady") {
     return (
       <div className="instructions">
         <h3>Select each of the characters below:</h3>

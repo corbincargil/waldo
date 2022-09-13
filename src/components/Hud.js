@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CharacterIcon from "./CharacterIcon";
 
 export default function Hud(props) {
-  const { map, score } = props;
+  const { characters, score } = props;
 
   return (
     <div className="hud">
@@ -11,7 +11,7 @@ export default function Hud(props) {
         <h1>Where's Waldo</h1>
       </Link>
       <div className="hud characters">
-        {map.characters.map((character) => (
+        {characters.map((character) => (
           <CharacterIcon
             name={character.name}
             icon={character.icon}

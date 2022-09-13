@@ -1,50 +1,80 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
 import CharacterSelect from "./CharacterSelect";
 import Instructions from "./Instructions";
 
 export default function GamePlay(props) {
-  const { map, gameStatus, setGameStatus } = props;
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const { map, characters, setCharacters, score } = props;
+  const [gameStatus, setGameStatus] = useState("gameReady");
+  const [selectedCharacter, setSelectedCharacter] = useState({});
+  const [selectedCharLocation, setSelectedCharLocation] = useState({});
+  const [clickCoordinates, setclickCoordinates] = useState({
+    ratioX: 0,
+    ratioY: 0,
+    x: 0,
+    y: 0,
+  });
+
+  useEffect(() => {
+    const correctXMin = selectedCharLocation.X_Min;
+    const correctXMax = selectedCharLocation.X_Max;
+    const correctYMin = selectedCharLocation.Y_Min;
+    const correctYMax = selectedCharLocation.Y_Max;
+
+    let XCoordinateCorrect;
+    let YCoordinateCorrect;
+
+    if (
+      clickCoordinates.ratioX > correctXMin &&
+      clickCoordinates.ratioX < correctXMax
+    ) {
+      console.log("correct X");
+      XCoordinateCorrect = true;
+    }
+    if (
+      clickCoordinates.ratioY > correctYMin &&
+      clickCoordinates.ratioY < correctYMax
+    ) {
+      console.log("correct Y");
+      YCoordinateCorrect = true;
+    }
+
+    if (XCoordinateCorrect && YCoordinateCorrect) {
+      console.log("CORRECT");
+      setSelectedCharacter({ ...selectedCharacter, isFound: true });
+    }
+  }, [selectedCharLocation]);
+
+  useEffect(() => {
+    const newCharacters = characters.map((character) => {
+      if (character.id === selectedCharacter.id) {
+        return selectedCharacter;
+      } else {
+        return character;
+      }
+    });
+    setCharacters(newCharacters);
+  }, [selectedCharacter]);
 
   function handleClick(e) {
-    // console.log(e);
-    // console.log(`image width: ${e.target.width}`);
-    // console.log(`image width: ${e.target.height}`);
-    const correctXMin = 0.48;
-    const correctXMax = 0.5;
-    const correctYMin = 0.4;
-    const correctYMax = 0.45;
-    // console.log(e.target);
-    const ratioX = (e.pageX - e.target.offsetLeft) / e.target.width;
-    const ratioY = (e.pageY - e.target.offsetTop) / e.target.height;
-    // console.log(ratioX);
-    // console.log(ratioY);
-    let correctX;
-    let correctY;
+    let newRatioX;
+    let newRatioY;
+    newRatioX = (e.pageX - e.target.offsetLeft) / e.target.width;
+    newRatioY = (e.pageY - e.target.offsetTop) / e.target.height;
+    setclickCoordinates({
+      ratioX: newRatioX,
+      ratioY: newRatioY,
+      x: e.pageX,
+      y: e.pageY,
+    });
 
-    if (ratioX > correctXMin && ratioX < correctXMax) {
-      //console.log("correct X");
-      correctX = true;
-    }
-    if (ratioY > correctYMin && ratioY < correctYMax) {
-      //console.log("correct Y");
-      correctY = true;
-    }
-
-    if (correctX && correctY) {
-      console.log("CORRECT");
-    }
-    // console.log(`X ratio: ${e.pageX / e.target.width}`);
-    // console.log(`Y ratio: ${e.pageY / e.target.height}`);
-
-    if (gameStatus == "searching") {
+    if (gameStatus === "searching") {
       setGameStatus("selectingCharacter");
     }
-    if (gameStatus == "selectingCharacter") {
+    if (gameStatus === "selectingCharacter") {
       setGameStatus("searching");
     }
-    setPosition({ x: e.pageX, y: e.pageY });
   }
 
   return (
@@ -56,15 +86,21 @@ export default function GamePlay(props) {
         onClick={handleClick}
       />
       <Instructions
-        characters={map.characters}
+        map={map}
         gameStatus={gameStatus}
         setGameStatus={setGameStatus}
+        characters={characters}
+        setCharacters={setCharacters}
       />
       <CharacterSelect
-        characters={map.characters}
         gameStatus={gameStatus}
         setGameStatus={setGameStatus}
-        position={position}
+        characters={characters}
+        clickCoordinates={clickCoordinates}
+        selectedCharacter={selectedCharacter}
+        setSelectedCharacter={setSelectedCharacter}
+        selectedCharLocation={selectedCharLocation}
+        setSelectedCharLocation={setSelectedCharLocation}
       />
     </div>
   );

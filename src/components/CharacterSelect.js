@@ -1,42 +1,51 @@
 import React from "react";
+
 import CharacterIcon from "./CharacterIcon";
+
 import { fetchLocations } from "../firebase/initialize";
 
 export default function CharacterSelect(props) {
-  const { characters, gameStatus, setGameStatus, position } = props;
+  const {
+    characters,
+    gameStatus,
+    setGameStatus,
+    clickCoordinates,
+    selectedCharacter,
+    setSelectedCharacter,
+    selectedCharLocation,
+    setSelectedCharLocation,
+  } = props;
 
   const locations = fetchLocations();
 
-  function getCorrectLocation(character) {
-    const doc = locations.find((location) => {
+  function getSelectedCharLocation(character) {
+    const selectedCharLocation = locations.find((location) => {
       return location.name.toLowerCase() === character.name.toLowerCase();
     });
-    return doc;
+    return selectedCharLocation;
   }
 
   function handleClick(id) {
     const char = characters.find((character) => {
       return character.id === id;
     });
-    console.log(char);
+    setSelectedCharacter(char);
+    const newSelectedCharLocation = getSelectedCharLocation(char);
+    setSelectedCharLocation(newSelectedCharLocation);
+    setGameStatus("searching");
     // 1) use char to fetch the correct char location.
-    const correctLocation = getCorrectLocation(char);
     // 2) if 'position' matches correctPosition, replace char with char = {...char,isFound: true} and increment charsFound.
     // 3) If charsFound == characters.length, setStatus to 'complete', else, setStatus to 'searching'
-    setGameStatus("searching");
   }
 
-  //   const correctPosition = { x: 796, y: 545 };
-  //   console.log(`correct: (${correctPosition.x}, ${correctPosition.y})`);
-  //   console.log(`you clicked: (${position.x},${position.y})`);
-
   if (gameStatus === "selectingCharacter") {
-    // console.log(position.x);
-    // console.log(position.y);
     return (
       <div
         className="character-select"
-        style={{ left: `${position.x}px`, top: `${position.y}px` }}
+        style={{
+          left: `${clickCoordinates.x}px`,
+          top: `${clickCoordinates.y}px`,
+        }}
       >
         {characters.map((character) => (
           <div
