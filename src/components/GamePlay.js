@@ -6,8 +6,16 @@ import GameImage from "./GameImage";
 import Instructions from "./Instructions";
 
 export default function GamePlay(props) {
-  const { map, characters, setCharacters, score } = props;
-  const [gameStatus, setGameStatus] = useState("gameReady");
+  const {
+    map,
+    characters,
+    setCharacters,
+    gameStatus,
+    setGameStatus,
+    time,
+    setTime,
+  } = props;
+
   const [selectedCharacter, setSelectedCharacter] = useState({});
   const [selectedCharLocation, setSelectedCharLocation] = useState({});
   const [clickCoordinates, setclickCoordinates] = useState({
@@ -79,8 +87,6 @@ export default function GamePlay(props) {
       setGameStatus("searching");
     }
   }
-
-  function displayGameImage() {}
 
   return (
     <div className="game-play">

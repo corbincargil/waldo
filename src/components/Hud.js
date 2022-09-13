@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Children } from "react";
 import { Link } from "react-router-dom";
 import CharacterIcon from "./CharacterIcon";
+import Timer from "./Timer";
 
 export default function Hud(props) {
-  const { characters, score } = props;
+  const { characters, time, setTime, gameStatus } = props;
 
   return (
     <div className="hud">
@@ -21,7 +22,12 @@ export default function Hud(props) {
           />
         ))}
       </div>
-      <h2 style={{ alignSelf: "center" }}>Score: {score}</h2>
+      <Timer
+        time={time}
+        setTime={setTime}
+        gameStatus={gameStatus}
+        style={{ alignSelf: "center" }}
+      />
       <h3 style={{ alignSelf: "center" }}>Leaderboards</h3>
     </div>
   );
