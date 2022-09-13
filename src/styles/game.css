@@ -44,6 +44,10 @@
   width: 99vw;
 }
 
+#game-image.blur {
+  filter: blur(8px);
+}
+
 .instructions {
   color: black;
   font-size: 1.5rem;

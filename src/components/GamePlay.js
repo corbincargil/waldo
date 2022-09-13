@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 import CharacterSelect from "./CharacterSelect";
+import GameImage from "./GameImage";
 import Instructions from "./Instructions";
 
 export default function GamePlay(props) {
@@ -70,7 +71,7 @@ export default function GamePlay(props) {
       x: e.pageX,
       y: e.pageY,
     });
-
+    //console.log(`(${newRatioX},${newRatioY})`);
     if (gameStatus === "searching") {
       setGameStatus("selectingCharacter");
     }
@@ -79,13 +80,16 @@ export default function GamePlay(props) {
     }
   }
 
+  function displayGameImage() {}
+
   return (
     <div className="game-play">
-      <img
+      <GameImage
         id="game-image"
         src={map.image}
         alt={map.name}
         onClick={handleClick}
+        gameStatus={gameStatus}
       />
       <Instructions
         map={map}
