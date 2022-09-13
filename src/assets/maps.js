@@ -27,7 +27,7 @@ const waldo = character("Waldo", waldoIcon, false, 5);
 
 const wenda = character("Wenda", wendaIcon, false, 6);
 
-const odlaw = character("Odlaw", odlawIcon, true, 7);
+const odlaw = character("Odlaw", odlawIcon, false, 7);
 
 const wizard = character("Whitebeard", wizardIcon, false, 8);
 

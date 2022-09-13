@@ -11,6 +11,7 @@
   text-decoration: none;
   position: sticky;
   top: 0px;
+  z-index: 10;
 }
 
 .game-container .characters {
@@ -37,7 +38,7 @@
 }
 
 #game-image {
-  position: absolute;
+  /* position: absolute; */
   top: 112px;
   left: 2px;
   width: 99vw;

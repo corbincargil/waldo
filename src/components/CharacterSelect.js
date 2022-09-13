@@ -10,9 +10,7 @@ export default function CharacterSelect(props) {
     gameStatus,
     setGameStatus,
     clickCoordinates,
-    selectedCharacter,
     setSelectedCharacter,
-    selectedCharLocation,
     setSelectedCharLocation,
   } = props;
 
@@ -52,7 +50,9 @@ export default function CharacterSelect(props) {
             key={character.id}
             className="selection-box"
             onClick={() => {
-              handleClick(character.id);
+              if (!character.isFound) {
+                handleClick(character.id);
+              }
             }}
           >
             <CharacterIcon

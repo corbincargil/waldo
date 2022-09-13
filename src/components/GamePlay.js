@@ -43,6 +43,8 @@ export default function GamePlay(props) {
     if (XCoordinateCorrect && YCoordinateCorrect) {
       console.log("CORRECT");
       setSelectedCharacter({ ...selectedCharacter, isFound: true });
+    } else {
+      console.log("Wrong!");
     }
   }, [selectedCharLocation]);
 
@@ -97,9 +99,7 @@ export default function GamePlay(props) {
         setGameStatus={setGameStatus}
         characters={characters}
         clickCoordinates={clickCoordinates}
-        selectedCharacter={selectedCharacter}
         setSelectedCharacter={setSelectedCharacter}
-        selectedCharLocation={selectedCharLocation}
         setSelectedCharLocation={setSelectedCharLocation}
       />
     </div>
