@@ -19,7 +19,7 @@ const masterChief = character("Master Chief", masterChiefIcon, false, 1);
 
 const chell = character("Chell", chellIcon, false, 2);
 
-const ratchet = character("Ratchet & Clank", ratchetIcon, false, 3);
+const ratchet = character("Ratchet", ratchetIcon, false, 3);
 
 const scorpion = character("Scorpion", scorpionIcon, false, 4);
 

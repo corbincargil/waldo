@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+
 import Hud from "./Hud";
 import GamePlay from "./GamePlay";
 

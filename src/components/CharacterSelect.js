@@ -19,13 +19,7 @@ export default function CharacterSelect(props) {
     { name: "wenda", X_Min: 0.48, X_Max: 0.5, Y_Min: 0.4, Y_Max: 0.45 },
     { name: "waldo", X_Min: 0.83, X_Max: 0.88, Y_Min: 0.7, Y_Max: 0.78 },
     { X_Max: 0.61, X_Min: 0.545, Y_Max: 0.39, Y_Min: 0.345, name: "scorpion" },
-    {
-      X_Max: 0.61,
-      X_Min: 0.55,
-      Y_Max: 0.637,
-      Y_Min: 0.6,
-      name: "ratchet & clank",
-    },
+    { X_Max: 0.61, X_Min: 0.55, Y_Max: 0.637, Y_Min: 0.6, name: "ratchet" },
     { X_Max: 0.08, X_Min: 0.05, Y_Max: 0.79, Y_Min: 0.74, name: "whitebeard" },
     { X_Max: 0.32, X_Min: 0.26, Y_Max: 0.81, Y_Min: 0.77, name: "chell" },
     { X_Max: 0.6, X_Min: 0.54, Y_Max: 0.93, Y_Min: 0.88, name: "master chief" },
@@ -39,7 +33,7 @@ export default function CharacterSelect(props) {
     return selectedCharLocation;
   }
 
-  function handleClick(id) {
+  function handleCharacterSelect(id) {
     const char = characters.find((character) => {
       return character.id === id;
     });
@@ -47,9 +41,6 @@ export default function CharacterSelect(props) {
     const newSelectedCharLocation = getSelectedCharLocation(char);
     setSelectedCharLocation(newSelectedCharLocation);
     setGameStatus("searching");
-    // 1) use char to fetch the correct char location.
-    // 2) if 'position' matches correctPosition, replace char with char = {...char,isFound: true} and increment charsFound.
-    // 3) If charsFound == characters.length, setStatus to 'complete', else, setStatus to 'searching'
   }
 
   if (gameStatus === "selectingCharacter") {
@@ -67,7 +58,7 @@ export default function CharacterSelect(props) {
             className="selection-box"
             onClick={() => {
               if (!character.isFound) {
-                handleClick(character.id);
+                handleCharacterSelect(character.id);
               }
             }}
           >

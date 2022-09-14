@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-import CharacterSelect from "./CharacterSelect";
 import GameImage from "./GameImage";
 import Instructions from "./Instructions";
+import CharacterSelect from "./CharacterSelect";
+import Completed from "./Completed";
 
 export default function GamePlay(props) {
   const {
@@ -24,33 +25,6 @@ export default function GamePlay(props) {
     y: 0,
   });
 
-  console.log(`rendered`);
-
-  // let interval;
-  // function startTimer() {
-  //   interval = setInterval(() => {
-  //     setTime((prevTime) => prevTime + 10);
-  //   }, 10);
-  // }
-  // function stopTimer() {
-  //   clearInterval(interval);
-  // }
-
-  // useEffect(() => {
-  //   switch (gameStatus) {
-  //     case "searching":
-  //     case "selectingCharacter":
-  //       setTimerOn(true);
-  //       break;
-  //     case "gameReady":
-  //     case "completed":
-  //       setTimerOn(false);
-
-  //     default:
-  //       break;
-  //   }
-  // }, [gameStatus]);
-
   useEffect(() => {
     const correctXMin = selectedCharLocation.X_Min;
     const correctXMax = selectedCharLocation.X_Max;
@@ -64,19 +38,16 @@ export default function GamePlay(props) {
       clickCoordinates.ratioX > correctXMin &&
       clickCoordinates.ratioX < correctXMax
     ) {
-      console.log("correct X");
       XCoordinateCorrect = true;
     }
     if (
       clickCoordinates.ratioY > correctYMin &&
       clickCoordinates.ratioY < correctYMax
     ) {
-      console.log("correct Y");
       YCoordinateCorrect = true;
     }
 
     if (XCoordinateCorrect && YCoordinateCorrect) {
-      console.log("CORRECT");
       setSelectedCharacter({ ...selectedCharacter, isFound: true });
     } else {
       console.log("Wrong!");
@@ -109,7 +80,7 @@ export default function GamePlay(props) {
     }
   }, [characters]);
 
-  function handleClick(e) {
+  function handleImgClick(e) {
     let newRatioX;
     let newRatioY;
     newRatioX = (e.pageX - e.target.offsetLeft) / e.target.width;
@@ -120,7 +91,6 @@ export default function GamePlay(props) {
       x: e.pageX,
       y: e.pageY,
     });
-    //console.log(`(${newRatioX},${newRatioY})`);
     if (gameStatus === "searching") {
       setGameStatus("selectingCharacter");
     }
@@ -135,7 +105,7 @@ export default function GamePlay(props) {
         id="game-image"
         src={map.image}
         alt={map.name}
-        onClick={handleClick}
+        onClick={handleImgClick}
         gameStatus={gameStatus}
       />
       <Instructions
@@ -155,6 +125,7 @@ export default function GamePlay(props) {
         setSelectedCharLocation={setSelectedCharLocation}
         setTimerOn={setTimerOn}
       />
+      <Completed gameStatus={gameStatus} />
     </div>
   );
 }
