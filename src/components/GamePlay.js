@@ -12,8 +12,7 @@ export default function GamePlay(props) {
     setCharacters,
     gameStatus,
     setGameStatus,
-    time,
-    setTime,
+    setTimerOn,
   } = props;
 
   const [selectedCharacter, setSelectedCharacter] = useState({});
@@ -24,6 +23,33 @@ export default function GamePlay(props) {
     x: 0,
     y: 0,
   });
+
+  console.log(`rendered`);
+
+  // let interval;
+  // function startTimer() {
+  //   interval = setInterval(() => {
+  //     setTime((prevTime) => prevTime + 10);
+  //   }, 10);
+  // }
+  // function stopTimer() {
+  //   clearInterval(interval);
+  // }
+
+  // useEffect(() => {
+  //   switch (gameStatus) {
+  //     case "searching":
+  //     case "selectingCharacter":
+  //       setTimerOn(true);
+  //       break;
+  //     case "gameReady":
+  //     case "completed":
+  //       setTimerOn(false);
+
+  //     default:
+  //       break;
+  //   }
+  // }, [gameStatus]);
 
   useEffect(() => {
     const correctXMin = selectedCharLocation.X_Min;
@@ -68,6 +94,21 @@ export default function GamePlay(props) {
     setCharacters(newCharacters);
   }, [selectedCharacter]);
 
+  useEffect(() => {
+    let charactersFound = 0;
+    characters.map((character) => {
+      if (character.isFound) {
+        charactersFound++;
+        console.log(`characters found: ${charactersFound}`);
+      }
+    });
+    if (charactersFound === map.characters.length) {
+      console.log("game completed");
+      setGameStatus("completed");
+      setTimerOn(false);
+    }
+  }, [characters]);
+
   function handleClick(e) {
     let newRatioX;
     let newRatioY;
@@ -103,6 +144,7 @@ export default function GamePlay(props) {
         setGameStatus={setGameStatus}
         characters={characters}
         setCharacters={setCharacters}
+        setTimerOn={setTimerOn}
       />
       <CharacterSelect
         gameStatus={gameStatus}
@@ -111,6 +153,7 @@ export default function GamePlay(props) {
         clickCoordinates={clickCoordinates}
         setSelectedCharacter={setSelectedCharacter}
         setSelectedCharLocation={setSelectedCharLocation}
+        setTimerOn={setTimerOn}
       />
     </div>
   );

@@ -4,7 +4,7 @@ import CharacterIcon from "./CharacterIcon";
 import Timer from "./Timer";
 
 export default function Hud(props) {
-  const { characters, time, setTime, gameStatus } = props;
+  const { characters, timerOn, setScore } = props;
 
   return (
     <div className="hud">
@@ -23,9 +23,8 @@ export default function Hud(props) {
         ))}
       </div>
       <Timer
-        time={time}
-        setTime={setTime}
-        gameStatus={gameStatus}
+        timerOn={timerOn}
+        setScore={setScore}
         style={{ alignSelf: "center" }}
       />
       <h3 style={{ alignSelf: "center" }}>Leaderboards</h3>

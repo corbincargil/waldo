@@ -2,10 +2,18 @@ import React, { useEffect } from "react";
 import CharacterIcon from "./CharacterIcon";
 
 export default function Instructions(props) {
-  const { map, gameStatus, setGameStatus, characters, setCharacters } = props;
+  const {
+    map,
+    gameStatus,
+    setGameStatus,
+    characters,
+    setCharacters,
+    setTimerOn,
+  } = props;
 
   function handleStartGame() {
     setGameStatus("searching");
+    setTimerOn(true);
   }
 
   useEffect(() => {
