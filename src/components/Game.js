@@ -25,3 +25,17 @@ export default function Game(props) {
     </div>
   );
 }
+
+// To do:
+// 1) Set up leaderboard page
+//    1a) Create Leaderboard.js component
+//    1b) Pull information from firebase and display
+//    1c) Include ability for users to select leaderboard for each map
+// 2) Connect Complete.js to leaderboad collection in firebase
+//    2a) when a user clicks submit, the form should submit to firebase
+// 3) Improve styling of app
+//    3a) Want to try implementing react spring for the displaying of:
+//        Instructions.js, Completed.js, and Feedback.js
+// 4) Add some sort of feedback for when the user selects a character
+//    4a) if they found a char, let them know. If not, tell them to keep
+//        looking
