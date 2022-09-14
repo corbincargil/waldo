@@ -14,6 +14,7 @@ export default function GamePlay(props) {
     gameStatus,
     setGameStatus,
     setTimerOn,
+    score,
   } = props;
 
   const [selectedCharacter, setSelectedCharacter] = useState({});
@@ -125,7 +126,7 @@ export default function GamePlay(props) {
         setSelectedCharLocation={setSelectedCharLocation}
         setTimerOn={setTimerOn}
       />
-      <Completed gameStatus={gameStatus} />
+      <Completed gameStatus={gameStatus} score={score} />
     </div>
   );
 }

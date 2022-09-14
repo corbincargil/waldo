@@ -20,6 +20,7 @@ export default function Game(props) {
         gameStatus={gameStatus}
         setGameStatus={setGameStatus}
         setTimerOn={setTimerOn}
+        score={score}
       ></GamePlay>
     </div>
   );

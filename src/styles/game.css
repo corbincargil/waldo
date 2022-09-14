@@ -48,7 +48,12 @@
   filter: blur(8px);
 }
 
-.instructions {
+#game-image.dark {
+  filter: brightness(0.25);
+}
+
+.instructions,
+.completed {
   color: black;
   font-size: 1.5rem;
   padding: 15px;
@@ -97,4 +102,35 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+.completed h1,
+.completed h3 {
+  margin: 10px;
+}
+
+.completed {
+  align-items: center;
+  height: 350px;
+}
+
+.completed button {
+  width: 100px;
+}
+
+.completed .submit-score {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.completed .submit-score input {
+  width: 250px;
+}
+
+.completed .bottom-row {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
 }
