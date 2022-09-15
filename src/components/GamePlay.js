@@ -17,6 +17,7 @@ export default function GamePlay(props) {
     score,
   } = props;
 
+  const [charactersNotFound, SetCharactersNotFound] = useState([null]);
   const [selectedCharacter, setSelectedCharacter] = useState({});
   const [selectedCharLocation, setSelectedCharLocation] = useState({});
   const [clickCoordinates, setclickCoordinates] = useState({
@@ -25,7 +26,6 @@ export default function GamePlay(props) {
     x: 0,
     y: 0,
   });
-  const [charactersNotFound, SetCharactersNotFound] = useState([]);
 
   useEffect(() => {
     const correctXMin = selectedCharLocation.X_Min;
@@ -68,23 +68,19 @@ export default function GamePlay(props) {
   }, [selectedCharacter]);
 
   useEffect(() => {
-    let charactersFound = 0;
-    characters.map((character) => {
-      if (character.isFound) {
-        charactersFound++;
-        console.log(`characters found: ${charactersFound}`);
-      }
-    });
-    if (charactersFound === map.characters.length) {
-      console.log("game completed");
-      setGameStatus("completed");
-      setTimerOn(false);
-    }
     const newUnfoundChars = characters.filter((character) => {
       if (!character.isFound) return { ...character };
     });
     SetCharactersNotFound(newUnfoundChars);
   }, [characters]);
+
+  useEffect(() => {
+    if (charactersNotFound.length === 0) {
+      console.log("game completed");
+      setGameStatus("completed");
+      setTimerOn(false);
+    }
+  }, [charactersNotFound]);
 
   function handleImgClick(e) {
     let newRatioX;
