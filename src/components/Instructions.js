@@ -9,11 +9,13 @@ export default function Instructions(props) {
     characters,
     setCharacters,
     setTimerOn,
+    setFeedback,
   } = props;
 
   function handleStartGame() {
     setGameStatus("searching");
     setTimerOn(true);
+    setFeedback("gameStarted");
   }
 
   useEffect(() => {

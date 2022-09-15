@@ -5,6 +5,7 @@ import GameImage from "./GameImage";
 import Instructions from "./Instructions";
 import CharacterSelect from "./CharacterSelect";
 import Completed from "./Completed";
+import Feedback from "./Feedback";
 
 export default function GamePlay(props) {
   const {
@@ -18,6 +19,7 @@ export default function GamePlay(props) {
   } = props;
 
   const [charactersNotFound, SetCharactersNotFound] = useState([null]);
+  const [feedback, setFeedback] = useState(null);
   const [selectedCharacter, setSelectedCharacter] = useState({});
   const [selectedCharLocation, setSelectedCharLocation] = useState({});
   const [clickCoordinates, setclickCoordinates] = useState({
@@ -51,8 +53,9 @@ export default function GamePlay(props) {
 
     if (XCoordinateCorrect && YCoordinateCorrect) {
       setSelectedCharacter({ ...selectedCharacter, isFound: true });
+      setFeedback("selectionCorrect");
     } else {
-      console.log("Wrong!");
+      setFeedback("selectionIncorrect");
     }
   }, [selectedCharLocation]);
 
@@ -103,6 +106,7 @@ export default function GamePlay(props) {
 
   return (
     <div className="game-play">
+      <Feedback feedback={feedback} />
       <GameImage
         id="game-image"
         src={map.image}
@@ -121,6 +125,7 @@ export default function GamePlay(props) {
                 characters={characters}
                 setCharacters={setCharacters}
                 setTimerOn={setTimerOn}
+                setFeedback={setFeedback}
               />
             );
           case "selectingCharacter":
