@@ -25,6 +25,7 @@ export default function GamePlay(props) {
     x: 0,
     y: 0,
   });
+  const [charactersNotFound, SetCharactersNotFound] = useState([]);
 
   useEffect(() => {
     const correctXMin = selectedCharLocation.X_Min;
@@ -79,6 +80,10 @@ export default function GamePlay(props) {
       setGameStatus("completed");
       setTimerOn(false);
     }
+    const newUnfoundChars = characters.filter((character) => {
+      if (!character.isFound) return { ...character };
+    });
+    SetCharactersNotFound(newUnfoundChars);
   }, [characters]);
 
   function handleImgClick(e) {
@@ -125,6 +130,7 @@ export default function GamePlay(props) {
         setSelectedCharacter={setSelectedCharacter}
         setSelectedCharLocation={setSelectedCharLocation}
         setTimerOn={setTimerOn}
+        charactersNotFound={charactersNotFound}
       />
       <Completed gameStatus={gameStatus} score={score} />
     </div>
