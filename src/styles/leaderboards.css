@@ -1,0 +1,26 @@
+.leaderboards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ol.leaderboard-list {
+  padding: 0;
+  background-color: whitesmoke;
+  border: 2px solid black;
+}
+
+li.list-item {
+  font-size: 1.2rem;
+  width: 500px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  align-items: center;
+}
+
+li.top-three span {
+  font-size: 1.4rem;
+  font-weight: 800;
+}

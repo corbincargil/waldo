@@ -68,7 +68,7 @@ export default function CharacterSelect(props) {
               icon={character.icon}
               isFound={character.isFound}
               style={{
-                width: "50px",
+                width: "70px",
               }}
             />
             <p className="character-name">{character.name}</p>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Completed(props) {
   const { gameStatus, score } = props;
@@ -23,7 +24,9 @@ export default function Completed(props) {
         </div>
         <div className="bottom-row">
           <button>Retry</button>
-          <button>View Leaderboards</button>
+          <Link to={`/leaderboards`}>
+            <button>View Leaderboards</button>{" "}
+          </Link>
         </div>
       </div>
     );

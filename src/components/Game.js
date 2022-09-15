@@ -36,6 +36,8 @@ export default function Game(props) {
 // 3) Improve styling of app
 //    3a) Want to try implementing react spring for the displaying of:
 //        Instructions.js, Completed.js, and Feedback.js
-// 4) Add some sort of feedback for when the user selects a character
-//    4a) if they found a char, let them know. If not, tell them to keep
+
+// COMPLETED
+// 1) Add some sort of feedback for when the user selects a character
+//    a) if they found a char, let them know. If not, tell them to keep
 //        looking
