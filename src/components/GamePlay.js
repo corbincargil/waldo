@@ -51,11 +51,13 @@ export default function GamePlay(props) {
       YCoordinateCorrect = true;
     }
 
-    if (XCoordinateCorrect && YCoordinateCorrect) {
+    if (XCoordinateCorrect && YCoordinateCorrect && charactersNotFound !== 0) {
       setSelectedCharacter({ ...selectedCharacter, isFound: true });
       setFeedback("selectionCorrect");
     } else {
-      setFeedback("selectionIncorrect");
+      if (gameStatus === "searching") {
+        setFeedback("selectionIncorrect");
+      }
     }
   }, [selectedCharLocation]);
 
@@ -76,6 +78,16 @@ export default function GamePlay(props) {
     });
     SetCharactersNotFound(newUnfoundChars);
   }, [characters]);
+
+  useEffect(() => {
+    function onTimeout() {
+      setFeedback(null);
+    }
+    const delay = setTimeout(onTimeout, 2000);
+    return () => {
+      clearTimeout(delay);
+    };
+  }, [feedback]);
 
   useEffect(() => {
     if (charactersNotFound.length === 0) {
