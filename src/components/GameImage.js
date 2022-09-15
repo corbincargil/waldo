@@ -2,11 +2,15 @@ import React from "react";
 
 export default function GameImage(props) {
   const { id, src, alt, onClick, gameStatus } = props;
-  if (gameStatus === "gameReady") {
-    return <img id={id} src={src} alt={alt} className="blur" />;
-  } else if (gameStatus === "completed") {
-    return <img id={id} src={src} alt={alt} className="dark" />;
-  } else {
-    return <img id={id} src={src} alt={alt} onClick={onClick} />;
+  switch (gameStatus) {
+    case "gameReady": {
+      return <img id={id} src={src} alt={alt} className="blur" />;
+    }
+    case "completed": {
+      return <img id={id} src={src} alt={alt} className="dark" />;
+    }
+    default: {
+      return <img id={id} src={src} alt={alt} onClick={onClick} />;
+    }
   }
 }
