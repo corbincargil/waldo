@@ -27,7 +27,6 @@ export default function Instructions(props) {
     from: { x: -400, y: -500, opacity: 0 },
     enter: { x: 0, y: 0, opacity: 1 },
     leave: { x: 1200, opacity: 0.1 },
-    exitBeforeEnter: true,
   });
 
   function handleStartGame() {

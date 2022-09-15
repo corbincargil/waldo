@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { animated, useTransition } from "@react-spring/web";
 import { Link } from "react-router-dom";
 
 export default function Completed(props) {
   const { gameStatus, score } = props;
-  console.log(`completed div rendered`);
-  if (gameStatus === "completed") {
-    return (
-      <div className="completed">
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (gameStatus === "completed") {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  });
+
+  const fadeIn = useTransition(isVisible, {
+    from: { x: 400, y: -500, opacity: 0 },
+    enter: { x: 0, y: 0, opacity: 1 },
+    leave: { x: 1200, opacity: 0.1 },
+  });
+
+  return fadeIn((style, item) =>
+    item ? (
+      <animated.div className="completed" style={style}>
         <h1>Congratulations!</h1>
         <h3>
           Your score was
@@ -28,7 +44,9 @@ export default function Completed(props) {
             <button>View Leaderboards</button>{" "}
           </Link>
         </div>
-      </div>
-    );
-  }
+      </animated.div>
+    ) : (
+      ""
+    )
+  );
 }
