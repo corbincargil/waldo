@@ -110,25 +110,36 @@ export default function GamePlay(props) {
         onClick={handleImgClick}
         gameStatus={gameStatus}
       />
-      <Instructions
-        map={map}
-        gameStatus={gameStatus}
-        setGameStatus={setGameStatus}
-        characters={characters}
-        setCharacters={setCharacters}
-        setTimerOn={setTimerOn}
-      />
-      <CharacterSelect
-        gameStatus={gameStatus}
-        setGameStatus={setGameStatus}
-        characters={characters}
-        clickCoordinates={clickCoordinates}
-        setSelectedCharacter={setSelectedCharacter}
-        setSelectedCharLocation={setSelectedCharLocation}
-        setTimerOn={setTimerOn}
-        charactersNotFound={charactersNotFound}
-      />
-      <Completed gameStatus={gameStatus} score={score} />
+      {(() => {
+        switch (gameStatus) {
+          case "gameReady":
+            return (
+              <Instructions
+                map={map}
+                gameStatus={gameStatus}
+                setGameStatus={setGameStatus}
+                characters={characters}
+                setCharacters={setCharacters}
+                setTimerOn={setTimerOn}
+              />
+            );
+          case "selectingCharacter":
+            return (
+              <CharacterSelect
+                gameStatus={gameStatus}
+                setGameStatus={setGameStatus}
+                characters={characters}
+                clickCoordinates={clickCoordinates}
+                setSelectedCharacter={setSelectedCharacter}
+                setSelectedCharLocation={setSelectedCharLocation}
+                setTimerOn={setTimerOn}
+                charactersNotFound={charactersNotFound}
+              />
+            );
+          case "completed":
+            return <Completed gameStatus={gameStatus} score={score} />;
+        }
+      })()}
     </div>
   );
 }
