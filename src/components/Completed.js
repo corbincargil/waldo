@@ -15,7 +15,7 @@ export default function Completed(props) {
   });
 
   const fadeIn = useTransition(isVisible, {
-    from: { x: 400, y: -500, opacity: 0 },
+    from: { x: 0, y: 1000, opacity: 0 },
     enter: { x: 0, y: 0, opacity: 1 },
     leave: { x: 1200, opacity: 0.1 },
   });
