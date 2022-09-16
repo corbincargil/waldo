@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/puzzle_1" element={<Game map={mapOne} />} />
-          <Route path="/puzzle_2" element={<Game map={mapTwo} />} />
-          <Route path="/leaderboards" element={<Leaderboards />} />
+          <Route path="/waldo/" element={<Home />} />
+          <Route path="/waldo/puzzle_1" element={<Game map={mapOne} />} />
+          <Route path="/waldo/puzzle_2" element={<Game map={mapTwo} />} />
+          <Route path="/waldo/leaderboards" element={<Leaderboards />} />
         </Routes>
         <Footer />
       </BrowserRouter>
