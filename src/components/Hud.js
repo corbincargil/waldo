@@ -8,7 +8,7 @@ export default function Hud(props) {
 
   return (
     <div className="hud">
-      <Link to="/" style={{ alignSelf: "center" }}>
+      <Link to="/waldo/" style={{ alignSelf: "center" }}>
         <h1>Where's Waldo</h1>
       </Link>
       <div className="hud characters">

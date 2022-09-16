@@ -53,7 +53,7 @@ export default function Leaderboards() {
     <div>
       <div className="header-container">
         <div className="header">
-          <Link to={"/"}>
+          <Link to={"/waldo/"}>
             <h1>Where's Waldo</h1>
           </Link>
           <h3>Leaderboards</h3>

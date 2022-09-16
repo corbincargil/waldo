@@ -9,7 +9,7 @@ export default function Home() {
       <div className="header-container">
         <div className="header">
           <h1>Where's Waldo</h1>
-          <Link to={"./leaderboards"}>
+          <Link to={"/waldo/leaderboards"}>
             <h3>Leaderboards</h3>
           </Link>
         </div>

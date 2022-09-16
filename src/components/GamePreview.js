@@ -8,7 +8,7 @@ export default function GamePreview(props) {
   return (
     <div className="preview">
       <h1>{map.name}</h1>
-      <Link to={`/puzzle_${map.id}`}>
+      <Link to={`/waldo/puzzle_${map.id}`}>
         <img
           className="preview-image"
           src={map.image}
