@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/waldo/static/css/main.40b98e1b.css",
+    "main.css": "/waldo/static/css/main.ac537844.css",
     "main.js": "/waldo/static/js/main.99c4c20e.js",
     "static/media/pic_2.jpg": "/waldo/static/media/pic_2.c72496cd2a61d36697ad.jpg",
     "static/media/pic_1.jpeg": "/waldo/static/media/pic_1.9736162ac89c68ce67a0.jpeg",
@@ -13,11 +13,11 @@
     "static/media/odlaw_icon.png": "/waldo/static/media/odlaw_icon.1976f9153c0cbc9084ba.png",
     "static/media/wizard_icon.jpeg": "/waldo/static/media/wizard_icon.6adf8c164e99066f76e0.jpeg",
     "index.html": "/waldo/index.html",
-    "main.40b98e1b.css.map": "/waldo/static/css/main.40b98e1b.css.map",
+    "main.ac537844.css.map": "/waldo/static/css/main.ac537844.css.map",
     "main.99c4c20e.js.map": "/waldo/static/js/main.99c4c20e.js.map"
   },
   "entrypoints": [
-    "static/css/main.40b98e1b.css",
+    "static/css/main.ac537844.css",
     "static/js/main.99c4c20e.js"
   ]
 }
