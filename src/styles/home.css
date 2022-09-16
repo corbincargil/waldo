@@ -1,26 +1,56 @@
+:root {
+  --preview-bg-color: #e5e5e5;
+  --preview-text-color: #14213d;
+  --header-bg-color: #ffffff;
+  --header-text-color: #14213d;
+  --home-bg-color: #14213d;
+  --home-text-color: #fca311;
+  --character-text-color: #000000;
+}
+
 body {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: var(--home-text-color);
+}
+
+.home {
+  background-color: var(--home-bg-color);
+  height: 90vh;
 }
 
 .header-container {
   width: 100vw;
-  background-color: aliceblue;
+  background-color: var(--header-bg-color);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .header {
   margin: 0px 50px;
+  color: var(--header-text-color);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
 
+.header h1 {
+  font-family: "Roboto Mono", monospace;
+}
+
 .header a,
 .header a:visited {
-  color: black;
-  text-decoration: none;
+  color: var(--header-text-color);
+}
+
+.header a:hover {
+  color: var(--home-text-color);
+  transition: 0.3s;
+}
+
+.home h2 {
+  text-decoration: underline;
 }
 
 .map-selection {
@@ -30,20 +60,35 @@ body {
 }
 
 .preview {
-  background-color: rgb(78, 113, 90);
+  background-color: var(--preview-bg-color);
+  color: var(--preview-text-color);
   width: 440px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.preview:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+  color: var(--home-text-color);
+  box-shadow: var(--home-text-color) 0px 6px 24px 0px,
+    var(--home-text-color) 0px 0px 0px 1px;
 }
 
 .preview-image {
   width: 300px;
   height: auto;
+  border-radius: 15px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  margin: 10px 0px;
 }
 
 .preview .characters {
+  color: var(--character-text-color);
   margin: 10px 4px;
   width: 450px;
   display: flex;
@@ -57,6 +102,9 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 3px solid var(--preview-text-color);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 
 .character-info {

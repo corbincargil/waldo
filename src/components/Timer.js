@@ -24,9 +24,12 @@ export default function Timer(props) {
 
   return (
     <div className="timer">
-      <span>Score: {("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-      <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}.</span>
-      <span>{("" + ((time / 10) % 100)).slice(-2)}</span>
+      <span id="score-text">Score: </span>
+      <div className="timer-numbers">
+        <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}.</span>
+        <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
+      </div>
     </div>
   );
 }

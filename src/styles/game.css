@@ -2,16 +2,90 @@
   display: none;
 }
 
+:root {
+  --hud-bg-color: #14213d;
+  --hud-text-color: #e5e5e5;
+  --hud-hover-color: #fca311;
+  --timer-bg-color: #ffffff;
+  --timer-text-color: #000000;
+  --game-bg-color: #e5e5e5;
+  --game-text-color: #14213d;
+  --instructions-bg-color: #14213d;
+  --instructions-text-color: #ffffff;
+  --instructions-button-hover-bg-color: #fca311;
+  --instructions-button-hover-text-color: #ffffff;
+  --character-text-color: #000000;
+  --character-icon-highlight: #fca311;
+  --selection-box-bg-color: #14213d;
+  --selection-box-hover-bg-color: #fca311;
+  --selection-box-text-color: #ffffff;
+  --selection-box-hover-text-color: #14213d;
+  --complete-h1-color: #fca311;
+}
+
 .hud {
-  padding: 0px 10px;
-  background-color: rgb(147, 191, 231);
+  padding: 0px 20px;
+  background-color: var(--hud-bg-color);
+  color: var(--hud-text-color);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   text-decoration: none;
   position: sticky;
   top: 0px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   z-index: 10;
+}
+
+.hud h1 {
+  font-family: "Roboto Mono", monospace;
+}
+
+.game-container .character-icon.not-found {
+  box-shadow: var(--character-icon-highlight) 0px 2px 2px,
+    var(--character-icon-highlight) 0px 0px 2px 2px;
+}
+
+.hud a,
+.hud a:visited {
+  text-decoration: none;
+  color: var(--hud-text-color);
+}
+
+.hud a:hover {
+  color: var(--hud-hover-color);
+  transition: 0.3s;
+}
+
+.timer {
+  padding: 3px 10px;
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+  font-size: 1.2rem;
+  font-weight: 300;
+  align-self: center;
+  background-color: var(--timer-bg-color);
+  color: var(--timer-text-color);
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+#score-text {
+  font-weight: 500;
+}
+
+.leaderboard-link {
+  align-self: center;
+}
+
+.game-container {
+  background-color: var(--game-bg-color);
 }
 
 .game-container .characters {
@@ -31,12 +105,6 @@
   filter: brightness(0.25);
 }
 
-.hud a,
-.hud a:visited {
-  text-decoration: none;
-  color: black;
-}
-
 #game-image {
   top: 112px;
   left: 2px;
@@ -53,12 +121,13 @@
 
 .instructions,
 .completed {
-  color: black;
+  background-color: var(--instructions-bg-color);
+  color: var(--instructions-text-color);
   font-size: 1.5rem;
   padding: 15px;
-  border: 3px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  background-color: #f7f7f7;
+  border: 1px solid #000000;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   width: 500px;
   height: 200px;
   display: flex;
@@ -70,6 +139,7 @@
 }
 
 .instructions h3 {
+  font-weight: 500;
   margin: 3px;
 }
 
@@ -81,6 +151,9 @@
 }
 
 .instructions button {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  margin: 5px 0px;
   font-size: 1.2rem;
   align-self: center;
   width: 90px;
@@ -88,9 +161,21 @@
   border-radius: 5px;
 }
 
+.instructions button:hover,
+.completed button:hover {
+  background-color: var(--instructions-button-hover-bg-color);
+  color: var(--instructions-button-hover-text-color);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
 .character-select {
-  width: 180px;
-  background-color: rgba(0, 0, 255, 0.75);
+  width: 225px;
+  background-color: var(--selection-box-bg-color);
+  color: var(--selection-box-text-color);
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
   position: absolute;
 }
 
@@ -100,10 +185,26 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  border-radius: 10px;
+}
+
+.selection-box .character-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+.selection-box:hover {
+  background-color: var(--selection-box-hover-bg-color);
+  color: var(--selection-box-hover-text-color);
+  transform: scale(1.03);
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .feedback {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 600;
   width: 350px;
   height: 50px;
   position: fixed;
@@ -112,23 +213,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
 }
 
 .feedback.correct {
-  background-color: rgba(0, 128, 0, 0.75);
-  color: darkgreen;
-  border-color: darkgreen;
+  background-color: rgba(0, 128, 0, 0.65);
+  color: rgb(0, 70, 0);
+  border-color: rgb(0, 70, 0);
 }
 
 .feedback.incorrect {
-  background-color: rgba(255, 0, 0, 0.75);
-  color: darkred;
-  border-color: darkred;
-}
-
-.completed h1,
-.completed h3 {
-  margin: 10px;
+  background-color: rgba(255, 0, 0, 0.65);
+  color: rgb(87, 0, 0);
+  border-color: rgb(87, 0, 0);
 }
 
 .completed {
@@ -137,19 +234,48 @@
   top: calc(50vh - 400px / 2);
 }
 
+.completed h1 {
+  color: var(--complete-h1-color);
+}
+
+.completed h1,
+.completed h3 {
+  margin: 10px;
+}
+
+.completed .final-score {
+  color: var(--complete-h1-color);
+  font-weight: bold;
+}
+
 .completed button {
-  width: 100px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  margin: 5px 0px;
+  font-size: 1.2rem;
+  align-self: center;
+  width: fit-content;
+  height: auto;
+  border-radius: 5px;
 }
 
 .completed .submit-score {
-  width: 400px;
+  width: 360px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .completed .submit-score input {
-  width: 250px;
+  padding-left: 12px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  margin: 5px 0px;
+  font-size: 1.2rem;
+  align-self: center;
+  width: 225px;
+  height: auto;
+  border-radius: 5px;
 }
 
 .completed .bottom-row {

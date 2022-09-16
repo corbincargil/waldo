@@ -10,37 +10,37 @@ export default function Leaderboards() {
       username: "Uno",
       score: 32560,
       timestamp: "",
-      id: "Cia1Or92HLrJh3EYLc5n",
+      id: "Cia1OasdrJh3EYLc5n",
     },
     {
       username: "Dos",
       score: 63560,
       timestamp: "",
-      id: "Cia1Or92HLrJh3EYLc5n",
+      id: "Cia1Or92Hsadf3EYLc5n",
     },
     {
       username: "Tres",
       score: 63560,
       timestamp: "",
-      id: "Cia1Or92HLrJh3EYLc5n",
+      id: "Cia1Or92HLrJasdfc5n",
     },
     {
       username: "Quatro",
       score: 63560,
       timestamp: "",
-      id: "Cia1Or92HLrJh3EYLc5n",
+      id: "Ciaasd92HLrJh3EYLc5n",
     },
     {
       username: "Cinco",
       score: 63560,
       timestamp: "",
-      id: "Cia1Or92HLrJh3EYLc5n",
+      id: "Cia1OasdfJh3EYLc5n",
     },
     {
       username: "Sies",
       score: 63560,
       timestamp: "",
-      id: "Cia1Or92HLrJh3EYLc5n",
+      id: "Cia1Or92HLrasdfc5n",
     },
   ];
 
@@ -50,24 +50,25 @@ export default function Leaderboards() {
   });
 
   return (
-    <div>
+    <div className="leaderboards-container">
       <div className="header-container">
         <div className="header">
           <Link to={"/waldo/"}>
-            <h1>Where's Waldo</h1>
+            <h1 id="leaderboard-header-h1">Where's Waldo</h1>
           </Link>
           <h3>Leaderboards</h3>
         </div>
       </div>
+      <h1>Top Scores:</h1>
       <div>
         {fadeIn((style, item) =>
           item ? (
             <animated.div className="leaderboards" style={style}>
-              <ol className="leaderboard-list">
+              <ol className="leaderboards-list">
                 {scores.map((user) => {
                   if (scores.indexOf(user) <= 2)
                     return (
-                      <li className="list-item top-three">
+                      <li className="list-item top-three" key={user.id}>
                         <span className="rank">
                           {scores.indexOf(user) + 1}.
                         </span>
@@ -77,7 +78,7 @@ export default function Leaderboards() {
                     );
                   else
                     return (
-                      <li className="list-item">
+                      <li className="list-item" key={user.id}>
                         <span className="rank">
                           {scores.indexOf(user) + 1}.
                         </span>

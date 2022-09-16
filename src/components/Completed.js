@@ -26,22 +26,30 @@ export default function Completed(props) {
         <h1>Congratulations!</h1>
         <h3>
           Your score was
-          <span>
-            {` `}
-            {("0" + Math.floor((score / 60000) % 60)).slice(-2)}:
-          </span>
-          <span>{("0" + Math.floor((score / 1000) % 60)).slice(-2)}.</span>
-          <span>{("" + ((score / 10) % 100)).slice(-2)}</span>
+          <div className="final-score">
+            <span>
+              {` `}
+              {("0" + Math.floor((score / 60000) % 60)).slice(-2)}:
+            </span>
+            <span>{("0" + Math.floor((score / 1000) % 60)).slice(-2)}.</span>
+            <span>{("" + ((score / 10) % 100)).slice(-2)}</span>
+          </div>
         </h3>
         <p>Please input your name to submit your score:</p>
         <div className="submit-score">
-          <input type="text" name="username" id="user-input" />
+          <input
+            type="text"
+            placeholder="Your name here..."
+            name="username"
+            id="user-input"
+            maxLength={18}
+          />
           <button>Submit</button>
         </div>
         <div className="bottom-row">
           <button>Retry</button>
-          <Link to={`/leaderboards`}>
-            <button>View Leaderboards</button>{" "}
+          <Link to={`/waldo/leaderboards`}>
+            <button>Leaderboards</button>{" "}
           </Link>
         </div>
       </animated.div>

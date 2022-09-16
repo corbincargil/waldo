@@ -1,16 +1,43 @@
+:root {
+  --leaderboards-bg-color: #14213d;
+  --leaderboards-h1-color: #ffffff;
+  --list-container-bg-color: #e5e5e5;
+  --list-item-color: #000000;
+  --top-three-color: #fca311;
+}
+
+#leaderboard-header-h1 {
+  color: var(--header-text-color);
+}
+
+.leaderboards-container {
+  background-color: var(--leaderboards-bg-color);
+}
+
+.leaderboards-container h1 {
+  font-family: "Titillium Web", sans-serif;
+  color: var(--leaderboards-h1-color);
+}
+
 .leaderboards {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var();
+  height: 75vh;
 }
 
-ol.leaderboard-list {
+ol.leaderboards-list {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
   padding: 0;
-  background-color: whitesmoke;
+  background-color: var(--list-container-bg-color);
   border: 2px solid black;
+  border-radius: 15px;
 }
 
 li.list-item {
+  color: var(--list-item-color);
   font-size: 1.2rem;
   width: 500px;
   height: 50px;
@@ -21,6 +48,8 @@ li.list-item {
 }
 
 li.top-three span {
-  font-size: 1.4rem;
-  font-weight: 800;
+  color: var(--top-three-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
 }

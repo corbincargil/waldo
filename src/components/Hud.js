@@ -27,7 +27,9 @@ export default function Hud(props) {
         setScore={setScore}
         style={{ alignSelf: "center" }}
       />
-      <h3 style={{ alignSelf: "center" }}>Leaderboards</h3>
+      <Link className="leaderboard-link" to="/waldo/leaderboards">
+        <h3 style={{ alignSelf: "center" }}>Leaderboards</h3>
+      </Link>
     </div>
   );
 }

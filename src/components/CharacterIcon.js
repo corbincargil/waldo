@@ -14,7 +14,7 @@ export default function CharacterIcon(props) {
     );
   } else {
     return (
-      <div className="character-icon">
+      <div className="character-icon not-found">
         <img
           src={props.icon}
           alt={props.name}
