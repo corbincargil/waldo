@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/waldo/static/css/main.992bbfcd.css",
+    "main.js": "/waldo/static/js/main.6b170ee8.js",
+    "static/media/pic_2.jpg": "/waldo/static/media/pic_2.c72496cd2a61d36697ad.jpg",
+    "static/media/pic_1.jpeg": "/waldo/static/media/pic_1.9736162ac89c68ce67a0.jpeg",
+    "static/media/ratchet_icon.png": "/waldo/static/media/ratchet_icon.fe2fdad3df9817d62a1f.png",
+    "static/media/scorpion_icon.png": "/waldo/static/media/scorpion_icon.5ef463e11053dd9f0bc0.png",
+    "static/media/chell_icon.png": "/waldo/static/media/chell_icon.f3381100df5ec0bd8888.png",
+    "static/media/wenda_icon.png": "/waldo/static/media/wenda_icon.115883a7885c4215acb2.png",
+    "static/media/waldo_icon.png": "/waldo/static/media/waldo_icon.237b9a811b4121cee8c4.png",
+    "static/media/master_chief_icon.png": "/waldo/static/media/master_chief_icon.2f6b8d5ebaebe2bf2721.png",
+    "static/media/odlaw_icon.png": "/waldo/static/media/odlaw_icon.1976f9153c0cbc9084ba.png",
+    "static/media/wizard_icon.jpeg": "/waldo/static/media/wizard_icon.6adf8c164e99066f76e0.jpeg",
+    "index.html": "/waldo/index.html",
+    "main.992bbfcd.css.map": "/waldo/static/css/main.992bbfcd.css.map",
+    "main.6b170ee8.js.map": "/waldo/static/js/main.6b170ee8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.992bbfcd.css",
+    "static/js/main.6b170ee8.js"
+  ]
+}
