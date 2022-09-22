@@ -18,7 +18,6 @@ body {
 
 .home {
   background-color: var(--home-bg-color);
-  height: 90vh;
 }
 
 .header-container {
@@ -54,6 +53,7 @@ body {
 }
 
 .map-selection {
+  height: 90vh;
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -62,7 +62,7 @@ body {
 .preview {
   background-color: var(--preview-bg-color);
   color: var(--preview-text-color);
-  width: 440px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,14 +73,14 @@ body {
 
 .preview:hover {
   transform: scale(1.05);
-  transition: 0.5s;
+  transition: 0.2s;
   color: var(--home-text-color);
   box-shadow: var(--home-text-color) 0px 6px 24px 0px,
     var(--home-text-color) 0px 0px 0px 1px;
 }
 
 .preview-image {
-  width: 250px;
+  width: 200px;
   height: auto;
   border-radius: 15px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;

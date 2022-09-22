@@ -8,6 +8,7 @@
 
 #leaderboard-header-h1 {
   color: var(--header-text-color);
+  font-family: "Roboto Mono", monospace;
 }
 
 .leaderboards-container {
