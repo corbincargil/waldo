@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Shopping Cart Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description:
 
-## Available Scripts
+This photo-tagging app is based on the game Where's Waldo. Start by selecting an image to play, and search for and select each of the characters for that image. A timer will start once the game begins to track your score. 
 
-In the project directory, you can run:
+Unfinished: Once the game is over, user's will be able to add their name into the input field and save their score to the leaderboards. 
 
-### `npm start`
+## Live Preview: 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Use this link to access a live preview of the site:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://corbincargil.github.io/waldo/
 
-### `npm test`
+## Lessons Learned: 
+* Advanced state management of React components to handle the status of the game and changing UI based on user inputs. 
+* Apply State and Effect hooks to efficiently handle state between functional components
+* Further practice implementing React Router for website navigation with unique URL's
+* Simple animations added to the UI using React Spring. 
+* Practice planning/organizing folder & component structure for a project with multiple "layers", resulting in clean and easy to understand logic and flow of data
+* Practice with basic styling of React components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Project Features: 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Choose an image/map (more maps coming soon).
+* Click start button to being the game and start the timer.
+* Search the map to find a character. 
+* Once a character is found, click on them and choose the correct character from the drop-down menu.
+* After all characters have been found, the timer stops and that is your score.
+* Unfinished: input your name to save your score to the leaderboards. 
+* Unfinsihed: scores will be saved to Firestore and the top scores can be accessed via the "leaderboards" page.
+* Simple animations implemented using React Spring.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Image selection page:`
+<img width="1424" alt="image" src="https://user-images.githubusercontent.com/100732012/192106108-08c26710-4ce9-4be5-a55b-d2047c263ccc.png">
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `Instructions:`
+<img width="1430" alt="image" src="https://user-images.githubusercontent.com/100732012/192106119-91fa8eed-f69d-4d04-ac9e-fb07d1912954.png">
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `Gameplay:`
+<img width="1428" alt="image" src="https://user-images.githubusercontent.com/100732012/192106142-bf42580e-2233-4594-baa0-b8cc8c5e9928.png">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### `Game results:`
+<img width="1429" alt="image" src="https://user-images.githubusercontent.com/100732012/192106163-45f1809f-e7b9-4c75-8948-b6bebee5a17a.png">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `Leaderboards:`
+<img width="1432" alt="image" src="https://user-images.githubusercontent.com/100732012/192106176-acb8c3a2-ae30-4f56-ac32-f5e8194b1448.png">
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Technologies Used:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* React.js
+* Firebase
+* HTML, CSS, JavaScript
+* Git, GitHub, & GH-Pages
+* Chrome dev. tools
+* MacOS Terminal
+* VS Code
+* Google & YouTube
