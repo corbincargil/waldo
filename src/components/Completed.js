@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Completed(props) {
   const { gameStatus, score } = props;
   const [isVisible, setIsVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (gameStatus === "completed") {
@@ -47,7 +49,13 @@ export default function Completed(props) {
           <button>Submit</button>
         </div>
         <div className="bottom-row">
-          <button>Retry</button>
+          <button
+            onClick={() => {
+              navigate(0);
+            }}
+          >
+            Retry
+          </button>
           <Link to={`/waldo/leaderboards`}>
             <button>Leaderboards</button>{" "}
           </Link>

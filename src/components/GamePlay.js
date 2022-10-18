@@ -154,7 +154,14 @@ export default function GamePlay(props) {
               />
             );
           case "completed":
-            return <Completed gameStatus={gameStatus} score={score} />;
+            return (
+              <Completed
+                gameStatus={gameStatus}
+                score={score}
+                setGameStatus={setGameStatus}
+                setTime={props.setTime}
+              />
+            );
         }
       })()}
     </div>

@@ -23,6 +23,8 @@ export default function Hud(props) {
         ))}
       </div>
       <Timer
+        time={props.time}
+        setTime={props.setTime}
         timerOn={timerOn}
         setScore={setScore}
         style={{ alignSelf: "center" }}
