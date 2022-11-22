@@ -25,6 +25,7 @@
 
 .hud {
   padding: 0px 20px;
+  height: 15vh;
   background-color: var(--hud-bg-color);
   color: var(--hud-text-color);
   display: flex;
@@ -96,8 +97,8 @@
 .game-container .character-icon {
   background-color: white;
   overflow: hidden;
-  width: 70px;
-  height: 70px;
+  width: 5vw;
+  height: 5vw;
   border-radius: 50%;
 }
 

@@ -51,7 +51,7 @@ export default function Instructions(props) {
               name={character.name}
               icon={character.icon}
               key={character.id}
-              style={{ width: "70px" }}
+              style={{ width: "5vw" }}
             />
           ))}
         </div>

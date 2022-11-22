@@ -18,7 +18,7 @@ export default function Hud(props) {
             icon={character.icon}
             isFound={character.isFound}
             key={character.id}
-            style={{ width: "70px" }}
+            style={{ width: "5vw" }}
           />
         ))}
       </div>
