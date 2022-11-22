@@ -7,7 +7,7 @@ export default function Hud(props) {
   const { characters, timerOn, setScore } = props;
 
   return (
-    <div className="hud">
+    <div className="hud container">
       <Link to="/waldo/" style={{ alignSelf: "center" }}>
         <h1>Where's Waldo</h1>
       </Link>
