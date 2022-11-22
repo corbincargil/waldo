@@ -20,10 +20,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //init services
-const db = getFirestore();
+export const db = getFirestore();
+
 //locations ref
 const LocationRef = collection(db, "locations");
-
 //Locations
 export function fetchLocations() {
   let locations = [];
@@ -33,4 +33,17 @@ export function fetchLocations() {
     });
   });
   return locations;
+}
+
+//leaderboard ref
+const leaderboardRef = collection(db, "leaderboards");
+// fetch leaderboards from db
+export async function fetchLeaderboards() {
+  let leaderboards = [];
+  await getDocs(leaderboardRef).then((snapshot) => {
+    snapshot.docs.forEach((leader) => {
+      leaderboards.push({ ...leader.data(), id: leader.id });
+    });
+  });
+  return leaderboards;
 }
