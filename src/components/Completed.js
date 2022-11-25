@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
 import { Link, useNavigate } from "react-router-dom";
+import { addNewScore } from "../firebase/initialize";
 
 export default function Completed(props) {
   const { gameStatus, score } = props;
   const [isVisible, setIsVisible] = useState(false);
+  const [username, setUsername] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addNewScore(username, score);
+    navigate(`/waldo/leaderboards`);
+  };
 
   const navigate = useNavigate();
 
@@ -38,16 +46,19 @@ export default function Completed(props) {
           </div>
         </h3>
         <p>Please input your name to submit your score:</p>
-        <div className="submit-score">
+        <form className="submit-score" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Your name here..."
             name="username"
             id="user-input"
-            maxLength={18}
+            maxLength={32}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
           />
           <button>Submit</button>
-        </div>
+        </form>
         <div className="bottom-row">
           <button
             onClick={() => {

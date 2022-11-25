@@ -5,6 +5,7 @@ import {
   getDocs,
   snapshot,
   doc,
+  addDoc,
   serverTimestamp,
 } from "firebase/firestore";
 
@@ -46,4 +47,12 @@ export async function fetchLeaderboards() {
     });
   });
   return leaderboards;
+}
+
+export async function addNewScore(username, score) {
+  await addDoc(leaderboardRef, {
+    username,
+    score,
+    timestamp: serverTimestamp(),
+  });
 }

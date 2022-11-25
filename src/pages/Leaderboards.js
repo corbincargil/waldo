@@ -17,7 +17,7 @@ export default function Leaderboards() {
     async function loadLeaderboards() {
       let leaderboards = await fetchLeaderboards();
       leaderboards.sort((a, b) => {
-        return b.score - a.score;
+        return a.score - b.score;
       });
       console.log(leaderboards);
       setScores(leaderboards);
@@ -94,7 +94,24 @@ export default function Leaderboards() {
                               {scores.indexOf(user) + 1}.
                             </span>
                             <span className="username">{user.username}</span>
-                            <span className="score">{user.score}</span>
+                            <div className="score">
+                              <span>
+                                {` `}
+                                {(
+                                  "0" + Math.floor((user.score / 60000) % 60)
+                                ).slice(-2)}
+                                :
+                              </span>
+                              <span>
+                                {(
+                                  "0" + Math.floor((user.score / 1000) % 60)
+                                ).slice(-2)}
+                                .
+                              </span>
+                              <span>
+                                {("" + ((user.score / 10) % 100)).slice(-2)}
+                              </span>
+                            </div>
                           </li>
                         );
                       else
@@ -104,7 +121,24 @@ export default function Leaderboards() {
                               {scores.indexOf(user) + 1}.
                             </span>
                             <span className="username">{user.username}</span>
-                            <span className="score">{user.score}</span>
+                            <div className="score">
+                              <span>
+                                {` `}
+                                {(
+                                  "0" + Math.floor((user.score / 60000) % 60)
+                                ).slice(-2)}
+                                :
+                              </span>
+                              <span>
+                                {(
+                                  "0" + Math.floor((user.score / 1000) % 60)
+                                ).slice(-2)}
+                                .
+                              </span>
+                              <span>
+                                {("" + ((user.score / 10) % 100)).slice(-2)}
+                              </span>
+                            </div>
                           </li>
                         );
                     })
