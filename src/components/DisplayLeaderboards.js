@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
+import Loading from "./Loading";
 import { fetchLeaderboards } from "../firebase/initialize";
 
 export default function DisplayLeaderboards(props) {
@@ -34,64 +35,68 @@ export default function DisplayLeaderboards(props) {
           item ? (
             <animated.div className="leaderboards" style={style}>
               <ol className="leaderboards-list">
-                {scores
-                  ? scores.map((user) => {
-                      if (scores.indexOf(user) <= 2)
-                        return (
-                          <li className="list-item top-three" key={user.id}>
-                            <span className="rank">
-                              {scores.indexOf(user) + 1}.
+                {scores.length > 0 ? (
+                  scores.map((user) => {
+                    if (scores.indexOf(user) <= 2)
+                      return (
+                        <li className="list-item top-three" key={user.id}>
+                          <span className="rank">
+                            {scores.indexOf(user) + 1}.
+                          </span>
+                          <span className="username">{user.username}</span>
+                          <div className="score">
+                            <span>
+                              {` `}
+                              {(
+                                "0" + Math.floor((user.score / 60000) % 60)
+                              ).slice(-2)}
+                              :
                             </span>
-                            <span className="username">{user.username}</span>
-                            <div className="score">
-                              <span>
-                                {` `}
-                                {(
-                                  "0" + Math.floor((user.score / 60000) % 60)
-                                ).slice(-2)}
-                                :
-                              </span>
-                              <span>
-                                {(
-                                  "0" + Math.floor((user.score / 1000) % 60)
-                                ).slice(-2)}
-                                .
-                              </span>
-                              <span>
-                                {("" + ((user.score / 10) % 100)).slice(-2)}
-                              </span>
-                            </div>
-                          </li>
-                        );
-                      else
-                        return (
-                          <li className="list-item" key={user.id}>
-                            <span className="rank">
-                              {scores.indexOf(user) + 1}.
+                            <span>
+                              {(
+                                "0" + Math.floor((user.score / 1000) % 60)
+                              ).slice(-2)}
+                              .
                             </span>
-                            <span className="username">{user.username}</span>
-                            <div className="score">
-                              <span>
-                                {` `}
-                                {(
-                                  "0" + Math.floor((user.score / 60000) % 60)
-                                ).slice(-2)}
-                                :
-                              </span>
-                              <span>
-                                {(
-                                  "0" + Math.floor((user.score / 1000) % 60)
-                                ).slice(-2)}
-                                .
-                              </span>
-                              <span>
-                                {("" + ((user.score / 10) % 100)).slice(-2)}
-                              </span>
-                            </div>
-                          </li>
-                        );
-                    })
-                  : ""}
+                            <span>
+                              {("" + ((user.score / 10) % 100)).slice(-2)}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                    else
+                      return (
+                        <li className="list-item" key={user.id}>
+                          <span className="rank">
+                            {scores.indexOf(user) + 1}.
+                          </span>
+                          <span className="username">{user.username}</span>
+                          <div className="score">
+                            <span>
+                              {` `}
+                              {(
+                                "0" + Math.floor((user.score / 60000) % 60)
+                              ).slice(-2)}
+                              :
+                            </span>
+                            <span>
+                              {(
+                                "0" + Math.floor((user.score / 1000) % 60)
+                              ).slice(-2)}
+                              .
+                            </span>
+                            <span>
+                              {("" + ((user.score / 10) % 100)).slice(-2)}
+                            </span>
+                          </div>
+                        </li>
+                      );
+                  })
+                ) : (
+                  <div className="loading-container">
+                    <div className="loading"></div>
+                  </div>
+                )}
               </ol>
             </animated.div>
           ) : (
