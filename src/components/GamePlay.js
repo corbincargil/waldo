@@ -156,6 +156,7 @@ export default function GamePlay(props) {
           case "completed":
             return (
               <Completed
+                map={map}
                 gameStatus={gameStatus}
                 score={score}
                 setGameStatus={setGameStatus}

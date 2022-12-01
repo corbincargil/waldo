@@ -4,13 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { addNewScore } from "../firebase/initialize";
 
 export default function Completed(props) {
-  const { gameStatus, score } = props;
+  const { map, gameStatus, score } = props;
   const [isVisible, setIsVisible] = useState(false);
   const [username, setUsername] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNewScore(username, score);
+    addNewScore(username, score, map.leaderboardRef);
     navigate(`/waldo/leaderboards`);
   };
 

@@ -58,17 +58,7 @@ export async function fetchLeaderboards(leaderboardRef) {
   return leaderboards;
 }
 
-// fetch leaderboards from db
-// export async function fetchMapTwoLeaderboards() {
-//   let leaderboards = [];
-//   await getDocs(mapTwoLeaderboardRef).then((snapshot) => {
-//     snapshot.docs.forEach((leader) => {
-//       leaderboards.push({ ...leader.data(), id: leader.id });
-//     });
-//   });
-//   return leaderboards;
-// }
-
+//add a new score by passing in the leaderboardRef
 export async function addNewScore(username, score, leaderboardRef) {
   await addDoc(leaderboardRef, {
     username,
