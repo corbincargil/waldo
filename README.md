@@ -2,13 +2,11 @@
 
 ## Description:
 
-This photo-tagging app is based on the game Where's Waldo. Start by selecting an image to play, and search for and select each of the characters for that image. A timer will start once the game begins to track your score. 
-
-Unfinished: Once the game is over, user's will be able to add their name into the input field and save their score to the leaderboards. 
+This photo-tagging app is based on the game Where's Waldo. Start by selecting an image to play, and search for and select each of the characters for that image. A timer will start once the game begins to track your score. Once the game is over, input a username to display your score on the leaderboards page. 
 
 ## Live Preview: 
 
-Use this link to access a live preview of the site:
+Use this link to access a live demo of the site:
 
 https://corbincargil.github.io/waldo/
 
@@ -28,8 +26,8 @@ https://corbincargil.github.io/waldo/
 * Search the map to find a character. 
 * Once a character is found, click on them and choose the correct character from the drop-down menu.
 * After all characters have been found, the timer stops and that is your score.
-* Unfinished: input your name to save your score to the leaderboards. 
-* Unfinsihed: scores will be saved to Firestore and the top scores can be accessed via the "leaderboards" page.
+* Input your name to save your score to the leaderboards. 
+* Scores will be saved to Firestore and the top scores can be accessed via the "leaderboards" page.
 * Simple animations implemented using React Spring.
 
 
@@ -57,6 +55,7 @@ https://corbincargil.github.io/waldo/
 
 * React.js
 * Firebase
+* React Spring
 * HTML, CSS, JavaScript
 * Git, GitHub, & GH-Pages
 * Chrome dev. tools
