@@ -10,6 +10,11 @@ import wizardIcon from "./wizard_icon.jpeg";
 import imageOne from "./pic_1.jpeg";
 import imageTwo from "./pic_2.jpg";
 
+import {
+  mapOneLeaderboardRef,
+  mapTwoLeaderboardRef,
+} from "../firebase/initialize";
+
 //factory function to create character objects
 const character = (name, icon, isFound, id) => {
   return { name, icon, isFound, id };
@@ -32,14 +37,15 @@ const odlaw = character("Odlaw", odlawIcon, false, 7);
 const wizard = character("Whitebeard", wizardIcon, false, 8);
 
 //factory function to create map objects
-const map = (name, image, characters, id) => {
-  return { name, image, characters, id };
+const map = (name, image, characters, leaderboardRef, id) => {
+  return { name, image, characters, leaderboardRef, id };
 };
 
 export const mapOne = map(
   "Classic Where's Waldo",
   imageOne,
   [waldo, wenda, odlaw, wizard],
+  mapOneLeaderboardRef,
   1
 );
 
@@ -47,5 +53,6 @@ export const mapTwo = map(
   "Video Game Characters",
   imageTwo,
   [masterChief, chell, ratchet, scorpion],
+  mapTwoLeaderboardRef,
   2
 );

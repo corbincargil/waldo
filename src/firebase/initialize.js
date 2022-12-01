@@ -36,10 +36,19 @@ export function fetchLocations() {
   return locations;
 }
 
-//leaderboard ref
-const leaderboardRef = collection(db, "leaderboards");
+//leaderboard ref - Classic Waldo
+export const mapOneLeaderboardRef = collection(
+  db,
+  "classic-waldo-leaderboards"
+);
+//leaderboard ref - Video Game Characters
+export const mapTwoLeaderboardRef = collection(
+  db,
+  "video-game-character-leaderboards"
+);
+
 // fetch leaderboards from db
-export async function fetchLeaderboards() {
+export async function fetchLeaderboards(leaderboardRef) {
   let leaderboards = [];
   await getDocs(leaderboardRef).then((snapshot) => {
     snapshot.docs.forEach((leader) => {
@@ -49,7 +58,18 @@ export async function fetchLeaderboards() {
   return leaderboards;
 }
 
-export async function addNewScore(username, score) {
+// fetch leaderboards from db
+// export async function fetchMapTwoLeaderboards() {
+//   let leaderboards = [];
+//   await getDocs(mapTwoLeaderboardRef).then((snapshot) => {
+//     snapshot.docs.forEach((leader) => {
+//       leaderboards.push({ ...leader.data(), id: leader.id });
+//     });
+//   });
+//   return leaderboards;
+// }
+
+export async function addNewScore(username, score, leaderboardRef) {
   await addDoc(leaderboardRef, {
     username,
     score,
