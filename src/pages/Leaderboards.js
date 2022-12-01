@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { animated, useTransition } from "@react-spring/web";
+import React from "react";
 import { Link } from "react-router-dom";
-import { db, fetchLeaderboards } from "../firebase/initialize";
 import DisplayLeaderboards from "../components/DisplayLeaderboards";
 import { mapOne, mapTwo } from "../assets/maps";
 
@@ -13,9 +11,12 @@ export default function Leaderboards() {
           <Link to={"/waldo/"}>
             <h1 id="leaderboard-header-h1">Where's Waldo</h1>
           </Link>
-          <h3>Leaderboards</h3>
+          <Link to={"/waldo/"}>
+            <h3>Back to map selection</h3>
+          </Link>
         </div>
       </div>
+      <h1>Top Scores</h1>
       <DisplayLeaderboards map={mapOne} />
       <DisplayLeaderboards map={mapTwo} />
     </div>

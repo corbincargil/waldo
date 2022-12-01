@@ -7,7 +7,7 @@ export default function DisplayLeaderboards(props) {
   const map = props.map;
   console.log(map);
 
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
 
   const fadeIn = useTransition(isVisible, {
     from: { x: -1000, y: 0, opacity: 0 },
@@ -28,7 +28,7 @@ export default function DisplayLeaderboards(props) {
 
   return (
     <div className="leaderboards-container">
-      <h1>Top Scores:</h1>
+      <h2>{map.name}</h2>
       <div>
         {fadeIn((style, item) =>
           item ? (
