@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
-import Loading from "./Loading";
 import { fetchLeaderboards } from "../firebase/initialize";
 
 export default function DisplayLeaderboards(props) {
