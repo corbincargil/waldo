@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/waldo/static/css/main.f93224f9.css",
-    "main.js": "/waldo/static/js/main.ceb5f6ec.js",
+    "main.css": "/waldo/static/css/main.864497bf.css",
+    "main.js": "/waldo/static/js/main.7053030c.js",
     "static/media/pic_2.jpg": "/waldo/static/media/pic_2.c72496cd2a61d36697ad.jpg",
     "static/media/pic_1.jpeg": "/waldo/static/media/pic_1.9736162ac89c68ce67a0.jpeg",
     "static/media/ratchet_icon.png": "/waldo/static/media/ratchet_icon.fe2fdad3df9817d62a1f.png",
@@ -13,11 +13,11 @@
     "static/media/odlaw_icon.png": "/waldo/static/media/odlaw_icon.1976f9153c0cbc9084ba.png",
     "static/media/wizard_icon.jpeg": "/waldo/static/media/wizard_icon.6adf8c164e99066f76e0.jpeg",
     "index.html": "/waldo/index.html",
-    "main.f93224f9.css.map": "/waldo/static/css/main.f93224f9.css.map",
-    "main.ceb5f6ec.js.map": "/waldo/static/js/main.ceb5f6ec.js.map"
+    "main.864497bf.css.map": "/waldo/static/css/main.864497bf.css.map",
+    "main.7053030c.js.map": "/waldo/static/js/main.7053030c.js.map"
   },
   "entrypoints": [
-    "static/css/main.f93224f9.css",
-    "static/js/main.ceb5f6ec.js"
+    "static/css/main.864497bf.css",
+    "static/js/main.7053030c.js"
   ]
 }
