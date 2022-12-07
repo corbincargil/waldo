@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CharacterIcon from "./CharacterIcon";
 import Timer from "./Timer";
 
-export default function Hud({ gameState, dispatch, timerOn }) {
+export default function Hud({ gameState, dispatch }) {
   return (
     <div className="hud container">
       <Link to="/waldo/" style={{ alignSelf: "center" }}>
@@ -21,9 +21,8 @@ export default function Hud({ gameState, dispatch, timerOn }) {
         ))}
       </div>
       <Timer
-        gameState={gameState}
         dispatch={dispatch}
-        timerOn={timerOn}
+        timerOn={gameState.timerOn}
         style={{ alignSelf: "center" }}
       />
       <Link className="leaderboard-link" to="/waldo/leaderboards">

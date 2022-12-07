@@ -7,7 +7,7 @@ import CharacterSelect from "./CharacterSelect";
 import Completed from "./Completed";
 import Feedback from "./Feedback";
 
-export default function GamePlay({ gameState, dispatch, setTimerOn }) {
+export default function GamePlay({ gameState, dispatch }) {
   const { map, characters, gameStatus } = gameState;
   const [charactersNotFound, SetCharactersNotFound] = useState([null]);
   const [feedback, setFeedback] = useState(null);
@@ -87,7 +87,7 @@ export default function GamePlay({ gameState, dispatch, setTimerOn }) {
     if (charactersNotFound.length === 0) {
       console.log("game completed");
       dispatch({ type: "UPDATE_STATUS", status: "completed" });
-      setTimerOn(false);
+      dispatch({ type: "START_TIMER", timerOn: false });
     }
   }, [charactersNotFound]);
 
@@ -130,7 +130,6 @@ export default function GamePlay({ gameState, dispatch, setTimerOn }) {
               <Instructions
                 gameState={gameState}
                 dispatch={dispatch}
-                setTimerOn={setTimerOn}
                 setFeedback={setFeedback}
               />
             );
@@ -142,7 +141,6 @@ export default function GamePlay({ gameState, dispatch, setTimerOn }) {
                 clickCoordinates={clickCoordinates}
                 setSelectedCharacter={setSelectedCharacter}
                 setSelectedCharLocation={setSelectedCharLocation}
-                setTimerOn={setTimerOn}
                 charactersNotFound={charactersNotFound}
               />
             );

@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
 import { fetchLeaderboards } from "../firebase/initialize";
 
-export default function DisplayLeaderboards(props) {
+export default function DisplayLeaderboards({ map }) {
   const [scores, setScores] = useState([]);
-  const map = props.map;
-  console.log(map);
-
   const [isVisible] = useState(true);
 
   const fadeIn = useTransition(isVisible, {
@@ -20,7 +17,6 @@ export default function DisplayLeaderboards(props) {
       leaderboards.sort((a, b) => {
         return a.score - b.score;
       });
-      console.log(leaderboards);
       setScores(leaderboards);
     }
     loadLeaderboards(map.leaderboardRef);

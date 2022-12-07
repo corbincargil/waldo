@@ -5,16 +5,12 @@ import GamePlay from "./GamePlay";
 
 export default function Game({ map }) {
   const [gameState, dispatch] = useReducer(gameReducer, map, getInitialState);
-  const [timerOn, setTimerOn] = useState(false);
+  // const [timerOn, setTimerOn] = useState(false);
 
   return (
     <div className="game-container">
-      <Hud gameState={gameState} dispatch={dispatch} timerOn={timerOn}></Hud>
-      <GamePlay
-        gameState={gameState}
-        dispatch={dispatch}
-        setTimerOn={setTimerOn}
-      ></GamePlay>
+      <Hud gameState={gameState} dispatch={dispatch}></Hud>
+      <GamePlay gameState={gameState} dispatch={dispatch}></GamePlay>
     </div>
   );
 }
@@ -35,6 +31,10 @@ export default function Game({ map }) {
 //    3a) Want to try implementing react spring for the displaying of:
 //        Instructions.js, Completed.js, and Feedback.js
 
+/* New action.types's: 
+    - START_GAME
+    - 
+*/
 function gameReducer(state, action) {
   switch (action.type) {
     case "UPDATE_MAP":
@@ -60,6 +60,11 @@ function gameReducer(state, action) {
         ...state,
         score: action.score,
       };
+    case "START_TIMER":
+      return {
+        ...state,
+        timerOn: action.timerOn,
+      };
     default:
       return state;
   }
@@ -71,5 +76,6 @@ function getInitialState(map) {
     characters: [...map.characters],
     gameStatus: "gameReady",
     score: 0,
+    timerOn: false,
   };
 }

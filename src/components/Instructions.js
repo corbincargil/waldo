@@ -2,21 +2,7 @@ import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
 import CharacterIcon from "./CharacterIcon";
 
-export default function Instructions({
-  gameState,
-  dispatch,
-  setTimerOn,
-  setFeedback,
-}) {
-  // const {
-  //   map,
-  //   gameStatus,
-  //   setGameStatus,
-  //   characters,
-  //   setCharacters,
-  //   setTimerOn,
-  //   setFeedback,
-  // } = props;
+export default function Instructions({ gameState, dispatch, setFeedback }) {
   const { map, characters, gameStatus } = gameState;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -36,16 +22,13 @@ export default function Instructions({
   });
 
   function handleStartGame() {
-    // setGameStatus("searching");
     dispatch({ type: "UPDATE_STATUS", status: "searching" });
-    setTimerOn(true);
+    dispatch({ type: "START_TIMER", timerOn: true });
     setFeedback("gameStarted");
   }
 
-  //is this necessary???
   useEffect(() => {
     if (gameStatus === "gameReady") {
-      // setCharacters(map.characters);
       dispatch({ type: "UPDATE_CHARS", characters: map.characters });
     }
   }, [gameStatus]);
