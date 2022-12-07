@@ -160,7 +160,6 @@ export default function GamePlay(props) {
                 gameStatus={gameStatus}
                 score={score}
                 setGameStatus={setGameStatus}
-                setTime={props.setTime}
               />
             );
         }
