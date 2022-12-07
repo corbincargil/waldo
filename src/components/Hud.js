@@ -1,18 +1,16 @@
-import React, { Children } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import CharacterIcon from "./CharacterIcon";
 import Timer from "./Timer";
 
-export default function Hud(props) {
-  const { characters, timerOn, setScore } = props;
-
+export default function Hud({ gameState, dispatch, timerOn }) {
   return (
     <div className="hud container">
       <Link to="/waldo/" style={{ alignSelf: "center" }}>
         <h1>Where's Waldo</h1>
       </Link>
       <div className="hud characters">
-        {characters.map((character) => (
+        {gameState.characters.map((character) => (
           <CharacterIcon
             name={character.name}
             icon={character.icon}
@@ -23,10 +21,9 @@ export default function Hud(props) {
         ))}
       </div>
       <Timer
-        time={props.time}
-        setTime={props.setTime}
+        gameState={gameState}
+        dispatch={dispatch}
         timerOn={timerOn}
-        setScore={setScore}
         style={{ alignSelf: "center" }}
       />
       <Link className="leaderboard-link" to="/waldo/leaderboards">

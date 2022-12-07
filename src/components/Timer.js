@@ -1,9 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-export default function Timer(props) {
-  const { timerOn, setScore } = props;
-
+export default function Timer({ dispatch, timerOn }) {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
@@ -14,7 +12,7 @@ export default function Timer(props) {
         setTime((prevTime) => prevTime + 100);
       }, 100);
     } else if (!timerOn) {
-      setScore(time);
+      dispatch({ type: "UPDATE_SCORE", score: time });
       clearInterval(interval);
     }
     return () => {

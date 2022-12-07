@@ -7,17 +7,8 @@ import CharacterSelect from "./CharacterSelect";
 import Completed from "./Completed";
 import Feedback from "./Feedback";
 
-export default function GamePlay(props) {
-  const {
-    map,
-    characters,
-    setCharacters,
-    gameStatus,
-    setGameStatus,
-    setTimerOn,
-    score,
-  } = props;
-
+export default function GamePlay({ gameState, dispatch, setTimerOn }) {
+  const { map, characters, gameStatus } = gameState;
   const [charactersNotFound, SetCharactersNotFound] = useState([null]);
   const [feedback, setFeedback] = useState(null);
   const [selectedCharacter, setSelectedCharacter] = useState({});
@@ -29,6 +20,9 @@ export default function GamePlay(props) {
     y: 0,
   });
 
+  /* All of the useEffects below are chained together. When one of them runs, it causes a domino effect where the rest of them run as well to update different state elements. A reducer can be used to bundle these actions and update all the differnt states at one time. */
+
+  //could export this to some sort of checkCorrectSelection function
   useEffect(() => {
     const correctXMin = selectedCharLocation.X_Min;
     const correctXMax = selectedCharLocation.X_Max;
@@ -69,7 +63,7 @@ export default function GamePlay(props) {
         return character;
       }
     });
-    setCharacters(newCharacters);
+    dispatch({ type: "UPDATE_CHARS", characters: newCharacters });
   }, [selectedCharacter]);
 
   useEffect(() => {
@@ -92,7 +86,7 @@ export default function GamePlay(props) {
   useEffect(() => {
     if (charactersNotFound.length === 0) {
       console.log("game completed");
-      setGameStatus("completed");
+      dispatch({ type: "UPDATE_STATUS", status: "completed" });
       setTimerOn(false);
     }
   }, [charactersNotFound]);
@@ -109,10 +103,13 @@ export default function GamePlay(props) {
       y: e.pageY,
     });
     if (gameStatus === "searching") {
-      setGameStatus("selectingCharacter");
+      dispatch({
+        type: "UPDATE_STATUS",
+        status: "selectingCharacter",
+      });
     }
     if (gameStatus === "selectingCharacter") {
-      setGameStatus("searching");
+      dispatch({ type: "UPDATE_STATUS", status: "searching" });
     }
   }
 
@@ -131,11 +128,8 @@ export default function GamePlay(props) {
           case "gameReady":
             return (
               <Instructions
-                map={map}
-                gameStatus={gameStatus}
-                setGameStatus={setGameStatus}
-                characters={characters}
-                setCharacters={setCharacters}
+                gameState={gameState}
+                dispatch={dispatch}
                 setTimerOn={setTimerOn}
                 setFeedback={setFeedback}
               />
@@ -143,9 +137,8 @@ export default function GamePlay(props) {
           case "selectingCharacter":
             return (
               <CharacterSelect
-                gameStatus={gameStatus}
-                setGameStatus={setGameStatus}
-                characters={characters}
+                gameState={gameState}
+                dispatch={dispatch}
                 clickCoordinates={clickCoordinates}
                 setSelectedCharacter={setSelectedCharacter}
                 setSelectedCharLocation={setSelectedCharLocation}
@@ -154,14 +147,7 @@ export default function GamePlay(props) {
               />
             );
           case "completed":
-            return (
-              <Completed
-                map={map}
-                gameStatus={gameStatus}
-                score={score}
-                setGameStatus={setGameStatus}
-              />
-            );
+            return <Completed gameState={gameState} dispatch={dispatch} />;
         }
       })()}
     </div>

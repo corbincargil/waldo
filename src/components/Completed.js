@@ -3,8 +3,8 @@ import { animated, useTransition } from "@react-spring/web";
 import { Link, useNavigate } from "react-router-dom";
 import { addNewScore } from "../firebase/initialize";
 
-export default function Completed(props) {
-  const { map, gameStatus, score } = props;
+export default function Completed({ gameState, dispatch }) {
+  const { map, gameStatus, score } = gameState;
   const [isVisible, setIsVisible] = useState(false);
   const [username, setUsername] = useState("");
 

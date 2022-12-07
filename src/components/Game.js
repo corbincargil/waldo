@@ -1,26 +1,19 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 
 import Hud from "./Hud";
 import GamePlay from "./GamePlay";
 
-export default function Game(props) {
-  const map = props.map;
-  const [characters, setCharacters] = useState([...map.characters]);
-  const [gameStatus, setGameStatus] = useState("gameReady");
+export default function Game({ map }) {
+  const [gameState, dispatch] = useReducer(gameReducer, map, getInitialState);
   const [timerOn, setTimerOn] = useState(false);
-  const [score, setScore] = useState(0);
 
   return (
     <div className="game-container">
-      <Hud characters={characters} timerOn={timerOn} setScore={setScore}></Hud>
+      <Hud gameState={gameState} dispatch={dispatch} timerOn={timerOn}></Hud>
       <GamePlay
-        map={map}
-        characters={characters}
-        setCharacters={setCharacters}
-        gameStatus={gameStatus}
-        setGameStatus={setGameStatus}
+        gameState={gameState}
+        dispatch={dispatch}
         setTimerOn={setTimerOn}
-        score={score}
       ></GamePlay>
     </div>
   );
@@ -41,3 +34,42 @@ export default function Game(props) {
 // 3) Improve styling of app
 //    3a) Want to try implementing react spring for the displaying of:
 //        Instructions.js, Completed.js, and Feedback.js
+
+function gameReducer(state, action) {
+  switch (action.type) {
+    case "UPDATE_MAP":
+      return {
+        ...state,
+        map: action.map,
+        characters: action.map.characters,
+        gameStatus: "gameReady",
+        score: 0,
+      };
+    case "UPDATE_CHARS":
+      return {
+        ...state,
+        characters: action.characters,
+      };
+    case "UPDATE_STATUS":
+      return {
+        ...state,
+        gameStatus: action.status,
+      };
+    case "UPDATE_SCORE":
+      return {
+        ...state,
+        score: action.score,
+      };
+    default:
+      return state;
+  }
+}
+
+function getInitialState(map) {
+  return {
+    map: map,
+    characters: [...map.characters],
+    gameStatus: "gameReady",
+    score: 0,
+  };
+}

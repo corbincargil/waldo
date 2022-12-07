@@ -2,20 +2,24 @@ import React from "react";
 
 import CharacterIcon from "./CharacterIcon";
 
-import { fetchLocations } from "../firebase/initialize";
+//used for storing char location on firebase.... unnessecary and slow
+// import { fetchLocations } from "../firebase/initialize";
 
 export default function CharacterSelect(props) {
   const {
-    characters,
-    gameStatus,
-    setGameStatus,
+    gameState,
+    dispatch,
     clickCoordinates,
     setSelectedCharacter,
     setSelectedCharLocation,
     charactersNotFound,
   } = props;
 
+  const { characters, gameStatus } = gameState;
+
+  //used for storing char location on firebase.... unnessecary and slow
   // const locations = fetchLocations();
+
   const locations = [
     { X_Min: 0.48, X_Max: 0.5, Y_Min: 0.4, Y_Max: 0.45, name: "wenda" },
     { X_Min: 0.83, X_Max: 0.88, Y_Min: 0.7, Y_Max: 0.78, name: "waldo" },
@@ -41,7 +45,7 @@ export default function CharacterSelect(props) {
     setSelectedCharacter(char);
     const newSelectedCharLocation = getSelectedCharLocation(char);
     setSelectedCharLocation(newSelectedCharLocation);
-    setGameStatus("searching");
+    dispatch({ type: "UPDATE_STATUS", status: "searching" });
   }
 
   if (gameStatus === "selectingCharacter") {
