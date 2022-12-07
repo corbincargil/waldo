@@ -27,6 +27,11 @@ export default function Game(props) {
 }
 
 // To do:
+
+// COMPLETED
+// 0) Add some sort of feedback for when the user selects a character
+//    a) if they found a char, let them know. If not, tell them to keep
+//        looking
 // 1) Set up leaderboard page
 //    1a) Create Leaderboard.js component
 //    1b) Pull information from firebase and display
@@ -36,8 +41,3 @@ export default function Game(props) {
 // 3) Improve styling of app
 //    3a) Want to try implementing react spring for the displaying of:
 //        Instructions.js, Completed.js, and Feedback.js
-
-// COMPLETED
-// 1) Add some sort of feedback for when the user selects a character
-//    a) if they found a char, let them know. If not, tell them to keep
-//        looking
