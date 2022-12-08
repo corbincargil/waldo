@@ -90,10 +90,10 @@ function getInitialState(map) {
     map: map,
     characters: [...map.characters],
     gameStatus: "gameReady",
-    score: 0,
     timerOn: false,
-    charactersNotFound: [...map.characters],
     selectedCharacter: {},
+    charactersNotFound: [...map.characters],
+    score: 0,
     feedback: null,
     clickCoordinates: {
       ratioX: 0,
