@@ -3,7 +3,7 @@ import { animated, useTransition } from "@react-spring/web";
 import CharacterIcon from "./CharacterIcon";
 
 export default function Instructions({ gameState, dispatch }) {
-  const { map, characters, gameStatus } = gameState;
+  const { characters, gameStatus } = gameState;
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -21,19 +21,6 @@ export default function Instructions({ gameState, dispatch }) {
     leave: { x: 1200, opacity: 0.1 },
   });
 
-  function handleStartGame() {
-    dispatch({ type: "UPDATE_STATUS", status: "searching" });
-    dispatch({ type: "START_TIMER", timerOn: true });
-    // setFeedback("gameStarted");
-    dispatch({ type: "RESET_FEEDBACK", feeback: "gameStarted" });
-  }
-
-  useEffect(() => {
-    if (gameStatus === "gameReady") {
-      dispatch({ type: "UPDATE_CHARS", characters: map.characters });
-    }
-  }, [gameStatus]);
-
   if (gameStatus === "gameReady") {
     return fadeIn((style, item) =>
       item ? (
@@ -49,7 +36,13 @@ export default function Instructions({ gameState, dispatch }) {
               />
             ))}
           </div>
-          <button onClick={handleStartGame}>Start</button>
+          <button
+            onClick={() => {
+              dispatch({ type: "GAME_STARTED" });
+            }}
+          >
+            Start
+          </button>
         </animated.div>
       ) : (
         ""

@@ -12,8 +12,8 @@ export default function Timer({ dispatch, timerOn }) {
         setTime((prevTime) => prevTime + 100);
       }, 100);
     } else if (!timerOn) {
-      setTime(0);
       dispatch({ type: "UPDATE_SCORE", score: time });
+      setTime(0);
       clearInterval(interval);
     }
     return () => {
