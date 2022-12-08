@@ -22,30 +22,13 @@ export default function GamePlay({ gameState, dispatch }) {
 
   /* All of the useEffects below are chained together. When one of them runs, it causes a domino effect where the rest of them run as well to update different state elements. A reducer can be used to bundle these actions and update all the differnt states at one time. */
 
-  //could export this to some sort of checkCorrectSelection function
   useEffect(() => {
-    const correctXMin = selectedCharLocation.X_Min;
-    const correctXMax = selectedCharLocation.X_Max;
-    const correctYMin = selectedCharLocation.Y_Min;
-    const correctYMax = selectedCharLocation.Y_Max;
+    const isCorrect = checkCorrectSelection(
+      selectedCharLocation,
+      clickCoordinates
+    );
 
-    let XCoordinateCorrect;
-    let YCoordinateCorrect;
-
-    if (
-      clickCoordinates.ratioX > correctXMin &&
-      clickCoordinates.ratioX < correctXMax
-    ) {
-      XCoordinateCorrect = true;
-    }
-    if (
-      clickCoordinates.ratioY > correctYMin &&
-      clickCoordinates.ratioY < correctYMax
-    ) {
-      YCoordinateCorrect = true;
-    }
-
-    if (XCoordinateCorrect && YCoordinateCorrect && charactersNotFound !== 0) {
+    if (isCorrect && charactersNotFound !== 0) {
       setSelectedCharacter({ ...selectedCharacter, isFound: true });
       setFeedback("selectionCorrect");
     } else {
@@ -150,4 +133,20 @@ export default function GamePlay({ gameState, dispatch }) {
       })()}
     </div>
   );
+}
+
+function checkCorrectSelection(charLocation, clickCoordinates) {
+  const correctXMin = charLocation.X_Min;
+  const correctXMax = charLocation.X_Max;
+  const correctYMin = charLocation.Y_Min;
+  const correctYMax = charLocation.Y_Max;
+
+  if (
+    clickCoordinates.ratioX > correctXMin &&
+    clickCoordinates.ratioX < correctXMax &&
+    clickCoordinates.ratioY > correctYMin &&
+    clickCoordinates.ratioY < correctYMax
+  ) {
+    return true;
+  } else return false;
 }
