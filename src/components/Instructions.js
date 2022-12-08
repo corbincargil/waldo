@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { animated, useTransition } from "@react-spring/web";
 import CharacterIcon from "./CharacterIcon";
 
-export default function Instructions({ gameState, dispatch, setFeedback }) {
+export default function Instructions({ gameState, dispatch }) {
   const { map, characters, gameStatus } = gameState;
 
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +24,8 @@ export default function Instructions({ gameState, dispatch, setFeedback }) {
   function handleStartGame() {
     dispatch({ type: "UPDATE_STATUS", status: "searching" });
     dispatch({ type: "START_TIMER", timerOn: true });
-    setFeedback("gameStarted");
+    // setFeedback("gameStarted");
+    dispatch({ type: "RESET_FEEDBACK", feeback: "gameStarted" });
   }
 
   useEffect(() => {

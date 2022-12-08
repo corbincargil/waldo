@@ -62,7 +62,7 @@ export default function Completed({ gameState, dispatch }) {
         <div className="bottom-row">
           <button
             onClick={() => {
-              navigate(0);
+              dispatch({ type: "RESET_GAME" });
             }}
           >
             Retry

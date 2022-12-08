@@ -32,8 +32,30 @@ export default function Game({ map }) {
 //        Instructions.js, Completed.js, and Feedback.js
 
 /* New action.types's: 
-    - START_GAME
-    - 
+    - GAME_RESET (when retry button is clicked)
+      * call getInitialState(map)
+
+    - GAME_STARTED (when start button is pushed)
+      * status: 'searching'
+
+    - IMAGE_CLICKED
+      * status: 'selectingCharacter'
+      * clickCoordinates: {ratioX, ratioY, x, y }
+      
+    - CHARACTER_SELECTED
+      * status: 'searching'
+      * selectedCharacter: char (passed into dispatch with action type)
+      * selectedCharLocation = getSelectedCharLocation(char)
+    
+    - SLECTION_CORRECT
+      * selectedCharacter: { ...selectedCharacter, isFound: true }
+      * feedback: 'selectionCorrect'
+  
+    - SLECTION_INCORRECT
+      * feedback: 'selectionCorrect'
+
+    - GAME_COMPLETED
+      * status: 'completed'
 */
 function gameReducer(state, action) {
   switch (action.type) {
@@ -65,6 +87,52 @@ function gameReducer(state, action) {
         ...state,
         timerOn: action.timerOn,
       };
+    case "CHARACTER_SELECTED":
+      console.log(action.isCorrect);
+      if (action.isCorrect && state.charactersNotFound !== 0) {
+        return {
+          ...state,
+          selectedCharacter: { ...action.newSelectedCharacter, isFound: true },
+          selectedCharLocation: action.newSelectedCharLocation,
+          feedback: "selectionCorrect",
+          gameStatus: "searching",
+        };
+      } else {
+        return {
+          ...state,
+          // selectedCharacter: action.newSelectedCharacter,
+          // selectedCharLocation: action.newSelectedCharLocation,
+          feedback: "selectionIncorrect",
+          gameStatus: "searching",
+        };
+      }
+    case "IMAGE_CLICKED":
+      let newStatus;
+      if (state.gameStatus === "searching") {
+        newStatus = "selectingCharacter";
+      } else if (state.gameStatus === "selectingCharacter") {
+        newStatus = "searching";
+      }
+      return {
+        ...state,
+        gameStatus: newStatus,
+        clickCoordinates: action.newClickCoordinates,
+      };
+
+    case "RESET_FEEDBACK":
+      return {
+        ...state,
+        feedback: action.feedback,
+      };
+    case "RESET_GAME":
+      return {
+        ...getInitialState(state.map),
+      };
+    case "UPDATE_CHARS_NOT_FOUND":
+      return {
+        ...state,
+        charactersNotFound: action.newUnfoundChars,
+      };
     default:
       return state;
   }
@@ -77,5 +145,15 @@ function getInitialState(map) {
     gameStatus: "gameReady",
     score: 0,
     timerOn: false,
+    charactersNotFound: [...map.characters],
+    selectedCharacter: {},
+    selectedCharLocation: {},
+    feedback: null,
+    clickCoordinates: {
+      ratioX: 0,
+      ratioY: 0,
+      x: 0,
+      y: 0,
+    },
   };
 }
