@@ -19,7 +19,6 @@ export default function CharacterSelect({ gameState, dispatch }) {
     dispatch({
       type: "CHARACTER_SELECTED",
       newSelectedCharacter: { ...char, isFound: true },
-      newSelectedCharLocation: charLocation,
       isCorrect: isCorrect,
       newCharacters: newCharacters,
     });

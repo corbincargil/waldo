@@ -25,11 +25,9 @@ function gameReducer(state, action) {
 
     case "IMAGE_CLICKED":
       let newStatus;
-      if (state.gameStatus === "searching") {
-        newStatus = "selectingCharacter";
-      } else if (state.gameStatus === "selectingCharacter") {
-        newStatus = "searching";
-      }
+      state.gameStatus === "searching"
+        ? (newStatus = "selectingCharacter")
+        : (newStatus = "searching");
       return {
         ...state,
         gameStatus: newStatus,
@@ -41,7 +39,6 @@ function gameReducer(state, action) {
         return {
           ...state,
           selectedCharacter: action.newSelectedCharacter,
-          selectedCharLocation: action.newSelectedCharLocation,
           characters: action.newCharacters,
           feedback: "selectionCorrect",
           gameStatus: "searching",
@@ -97,7 +94,6 @@ function getInitialState(map) {
     timerOn: false,
     charactersNotFound: [...map.characters],
     selectedCharacter: {},
-    selectedCharLocation: {},
     feedback: null,
     clickCoordinates: {
       ratioX: 0,
